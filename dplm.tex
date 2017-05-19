@@ -15,6 +15,8 @@
 \numberwithin{figure}{section}
 \bibliographystyle{plain}
 \usepackage{hyperref}
+\usepackage{environ}
+
 
 
 \newcounter{nextsec}
@@ -34,6 +36,14 @@
 \newenvironment{bfigure}[1]{\begin{figure} [#1] \begin{bf}}{\end{bf} \end{figure}}
 \newcommand{\icaption}[1]{\caption{\textit{\textmd {#1}}}}
 \newcommand{\colorg}[1]{{\color{green}{#1}}}
+
+
+\NewEnviron{bigequation}{%
+    \begin{equation}
+    \scalebox{1.5}{$\BODY$}
+    \end{equation}
+    }
+
 
 \begin{document}
 
@@ -210,7 +220,7 @@ i\hbar\frac{\partial \Psi(\bm{x_1},\dots, \bm{x_n},t )}{\partial t} = \Bigg[\sum
 
 A HBT effektus vizsgálatánál a különböző számítások könnyítése érdekében elhanyagoljuk az erős kölcsönhatást, amely tapasztalatok szerint pionok esetén megtehető, de már protonok esetén nem ~\cite{Pratt:1990zq}. Továbbá csak a párok közti Coulomb-kölcsönhatást vesszük figyelembe, elhanyagolva többi hadron által okozott töltésfelhőt. Így ~\aref{eq:Sch0} egyenlet a következő, egyszerűbb alakra egyszerűsödik:
 \begin{equation}
-i\hbar\frac{\partial \Psi(\bm{x_1},\dots, \bm{x_n},t )}{\partial t} = \Bigg[-\sum_{i=1}^{n}\frac{\hbar^2}{2m_i}\Delta_i + \frac{1}{2}\sum_{i\neq j} V_C(\bm{x_i},\bm{x_j})\Bigg]\Psi(\bm{x_1},\dots, \bm{x_n} ,t)
+i\hbar\frac{\partial \Psi(\bm{x_1},\dots, \bm{x_n},t )}{\partial t} = \Bigg[-\sum_{i=1}^{n}\frac{\hbar^2}{2m_i}\Delta_i + \frac{1}{2}\sum_{i\neq j} V_\mathcal{C}(\bm{x_i},\bm{x_j})\Bigg]\Psi(\bm{x_1},\dots, \bm{x_n} ,t)
 \label{eq:Sch}
 \end{equation}
 
@@ -222,7 +232,7 @@ Mivel energia saját állapotokkal dolgozunk, ezért  ~\aref{eq:Sch} egyenletet 
 ahol $\Psi_{\bm{p_1}, \bm{p_2}, \dots, \bm{p_n}}(\bm{x_1}, \bm{x_2}, \dots, \bm{x_n})$ az időfüggetlen Schrödinger egyenlet megoldása:
 
 \begin{equation}
-\Bigg[-\sum_{i=1}^{n}\frac{\hbar^2}{2m_i}\Delta_i + \frac{1}{2}\sum_{i\neq j} V_C(\bm{x_i},\bm{x_j})  
+\Bigg[-\sum_{i=1}^{n}\frac{\hbar^2}{2m_i}\Delta_i + \frac{1}{2}\sum_{i\neq j} V_\mathcal{C}(\bm{x_i},\bm{x_j})  
  - c\sum_{i=1}^n p_i^0
  \Bigg]\Psi_{\bm{p_1}, \bm{p_2}, \dots, \bm{p_n}}(\bm{x_1}, \bm{x_2}, \dots, \bm{x_n}) = 0
 \end{equation}
@@ -244,7 +254,13 @@ elvégzése után a következő lesz:
 \Psi_{{p_1}{p_2}({x_1},{x_2})} = \frac{1}{\sqrt{2}}\big({e^{{ip_1x_1}+i{p_2x_2}}+e^{i{p_2x_1}+i{p_1x_2}}}\big)
 \end{equation}
 
-A ${K}={p_1+p_2}$, ${k}=\frac{{p_1-p_2}}{2}$, ${r}={x_1-x_2}$, ${R}=\frac{{x_1+x_2}}{2}$ változókra áttérve (ezen transzformáció esetén az integrálási mérték nem változik, hiszen $d^4x_1d^4x_2=d^4Rd^4r$) a hullámfüggvény abszolút értéke a következő alakra egyszerűsödik:
+Tömegközépponti koordináta rendszerben, azaz a következő változókra való áttérés után (ezen transzformáció esetén az integrálási mérték nem változik, hiszen $d^4x_1d^4x_2=d^4Rd^4r$):
+\begin{equation}
+{K}={p_1+p_2},\;\;\;\;{k}=\frac{{p_1-p_2}}{2},\;\;\;\;{r}={x_1-x_2},\;\;\;\;{R}=\frac{{x_1+x_2}}{2}
+\label{eq:CMF}
+\end{equation}
+\noindent
+a hullámfüggvény abszolút értéke a következő alakra egyszerűsödik:
 \begin{equation}
 \abs{\Psi_{{p_1}{p_2}}({r},{R})} = \frac{1}{\sqrt{2}}\abs{e^{{KR}}(e^{i{kr}}+e^{-i{kr}})}=\sqrt{2}\abs{\cos{2{kr}}}
 \end{equation}
@@ -253,7 +269,7 @@ Ebből következőleg a kétrészecske invariáns momentumeloszlásra a követke
 \begin{equation}
 N_2({p_1},{p_2})=\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})+\frac{1}{2}\big(\tilde{\mathcal{S}}(2{k}, {p_1})\tilde{\mathcal{S^*}}(2{k}, {p_2})+\tilde{\mathcal{S^*}}(2{k},{ p_1})\tilde{\mathcal{S}}(2{k}, {p_2})\big),
 \end{equation}
-
+\noindent
 ahol $\tilde{\mathcal{S}}$ a forrásfüggvény Fourier transzformáltja:
 \begin{equation}
 \tilde{\mathcal{S}}({q}, {k})=\int d^4x\mathcal{S}(x,k)e^{i{qx}}
@@ -316,7 +332,7 @@ A karakterisztikus függvény Fourier transzformáltját kiszámolva (az integr�
 \mathcal{L}(\bm{r},\alpha,R) = \frac{1}{(2\pi)^3}\int d^3q \Phi(\bm{q}, \alpha, R)e^{i\bm{qr}}= \frac{1}{(2\pi)^3}\int e^{i\bm{qr}}e^{-\abs{\bm{q}R}^\alpha},
  \label{eq:Levyint}
 \end{equation}
-
+\noindent
 ahol $0< \alpha \leq 2$ és $0<R$ a Lévy eloszlás paraméterei. Speciálisan, $\alpha=2$ esetén a Lévy eloszlás a normális eloszlás lesz:
 \begin{equation}
 \mathcal{N}(\bm{r},\sigma) = \mathcal{L}\bigg(\bm{r}, \frac{\sigma}{\sqrt{2}}\bigg) = \mathcal{L}\big(\bm{r}, 2^{-\frac{1}{\alpha}}\sigma\big)
@@ -342,7 +358,6 @@ Az egydimenziós Lévy eloszlás aszimptotikus viselkedéséből  ~\cite{LevyEff
 \begin{equation}
 \mathcal{L}(r,\alpha) \approx \frac{\alpha}{2\pi^2}\sum_{k=1}^{N}(-1)^{k+1}\frac{\Gamma(\alpha k)}{\Gamma(k)} \sin{\bigg(\frac{\pi\alpha k}{2}\bigg)}\frac{\alpha k+1}{r^{\alpha k+3}},
 \end{equation}
-
 ahol $\Gamma(x)$ a Gamma függvény:
 \begin{equation}
  \Gamma (z)=\int _{0}^{\infty }x^{z-1}e^{-x}\,dx
@@ -435,7 +450,6 @@ Az egyenletben szereplő $\alpha_j$ paraméter a következőképpen határozhat�
 \alpha_n = n!-1-\sum_{j=1}^{n-1}\binom{n}{j}\alpha_j,
 \label{eq:alphan}
 \end{equation}
-
 első néhány értéke: $\alpha_1=0,\;\alpha_2=1\;\alpha_3=2$.
 
 \subsection{Parciális koherencia}
@@ -472,27 +486,83 @@ Ez a paraméter nem függ az $f_C$ értékétől, mag-glória modell esetén koh
 
 
 \section{Coulomb-korrekció számítása}
-Háromrészecske: ~\cite{Alt:1998nr}
+A Bose-Einstein analízis során kizárólag a Bose-Einstein statisztika következményeként megjelenő korrelációk vizsgálata a cél. Az analízis során töltött pionok közti korreláció vizsgálata a cél, mivel ezekből keletkezik a legtöbb. Azonban elektromos töltésük következtében fellép a Coulomb kölcsönhatás a részecskék között amely jelentősen torzítja a korrelációs függvényt. Az effektus kiküszöbölése érdekében definiálunk egy Coulomb-korrekciós faktort, amellyel a nyers korrelációs függvényt megszorozva megkapjuk a tiszta, csak Bose-Einstein statisztikából származó korrelációs függvényt.
+
+A Coulomb-korrekciós faktor definiciója $n$ részecske esetén a következő ~\cite{Alt:2001dj}:
+
+\begin{equation}
+K(\bm{k}_1,\dots,\bm{k}_n)=
+\frac{
+\int \prod_{i=1}^n\mathcal{S}(\bm{k}_i, \bm{r}_i)
+\abs{\Psi^{0}_{\bm{k_1},\dots,\bm{k_n}}(\bm{r_1},\dots,\bm{r_n})}\prod_{i=1}^n d^3 \bm{r}_i
+}{\int \prod_{i=1}^n\mathcal{S}(\bm{k}_i, \bm{r}_i)
+\abs{\Psi^\mathcal{C}\bm{k_1},\dots,\bm{k_n}}(\bm{r_1},\dots,\bm{r_n})\prod_{i=1}^n d^3 \bm{r}_i},
+\end{equation}
+ahol a $\Psi^0$ szabad hullámfüggvény, a $\Psi^\mathcal{C}$ pedig a Coulomb hullámfüggvény.
+
 \subsection{Coulomb-kölcsönhatás}
 \subsubsection{Kétrészecske}
-hipergeometrikus függvény
-számolás, aszimptotikus sor, cachelés
+A kétrészecske Coulomb korrekció meghatározása érdekében meg kell oldanunk a kétrészecske Coulomb problémát. Mivel azonos részecskékről beszélünk a már bevezetett tömegközépponti koordinátákra áttérve (\ref{eq:CMF})  a hullámfüggvény:
+\begin{equation}
+\Psi^\mathcal{C}(\bm{r},\bm{R}) = \Psi(\bm{r})e^{i\bm{KR}},
+\end{equation}
+alakot ölti, ahol a relatív momentumtól függő hullámfüggvényre a Schrödinger egyenlet a következő lesz:
+\begin{equation}
+\bigg[-\frac{\hbar^2}{2\mu}\Delta_{\bm{r}}+V_\mathcal{C}(\bm{r})+\frac{\hbar^2\bm{k}^2}{2\mu}\bigg]\Psi(\bm{r})=0,
+\end{equation}
+ahol $\mu=\frac{m}{2}$ a redukált tömeg, $V_\mathcal{C}$ pedig a Coulomb potenciál.
+
+Az egyenletet megoldva (\cite{Landau3}) valamint elvégezve a szimmetrizációt(részecskék felcserélésének szimmetriája: $\bm{r}\rightarrow -\bm{r}$) a következő adódik a hullámfüggvényre:
+\begin{equation}
+\Psi_{\bm{k}}(\bm{r}) = \frac{\mathcal{N}}{\sqrt{2}}\Big[e^{i\bm{kr}}F(-i\eta, 1, i(kr-\bm{kr})
++e^{-i\bm{kr}}F(-i\eta, 1, i(kr+\bm{kr})\Big]
+\end{equation}
+ahol $\mathcal{N}$ normálási tényező, $\eta=\frac{\mu\alpha}{2k}$ ($\alpha\approx \frac{1}{137}$ finomszerkezeti állandó), és $F(a,b,z)$ az úgynevezett elfajult hipergeometrikus függvény, amelyet az alábbi sor definiál:
+\begin{equation}
+F(a,b,z)=\sum_{k=0}^\infty\frac{a^{(k)}}{b^{(k)}n!}z^k,
+\label{eq:Fserie}
+\end{equation}
+itt $a^{(0)}=1,\;a^{(k)}=a(a+1)\dots(a+k-1)$. Az így definiált $F(a,b,z)$ függvény kielégíti a 
+\begin{equation}
+zF''(a,b,z)+(b-z)F'(a,b,z)-aF(a,b,z)=0
+\end{equation}
+differenciálegyenletet ($'=\frac{d}{dz}$), valamint számunkra egy lényeges tulajdonsága:
+\begin{equation}
+F(a,b,z) = e^zF(b-a, b, -z)
+\end{equation}
+
+Numerikusan a hipergeometrikus függvény kiszámolása ~\aref{eq:Fserie} definició alapján történhet. Azonban $\abs{z}>>1$ esetén a felösszegzés nem végezhető el hatékonyan, mivel nagyon sokáig kell összegezni, hogy lássuk a konvergenciát (hogy a faktoriális legyőzze a hatványfüggvényt), és a faktoriális és hatványfüggvény következtében nagyon nagy számokkal kell dolgozni, amelyek kiesnek a számítógép által általánosan használt 64-bites dupla pontos lebegőpontos számábrázolási tartományából. A sor alak tipikusan $\abs{z}<30$ esetén alkalmazható. Ez a probléma orvosolható, a hipergeometrikus függvény aszimptotikus sorának alkalmazásával, amely a következőképpen néz ki ~\cite{NIST:DLMF}:
+\begin{equation}
+F(a,b,z)=\frac{\Gamma(b)e^zz^{a-b}}{\Gamma(a)}\sum_{k=0}^{\infty}\frac{(1-a)^{(k)}(b-a)^{(k)}}{k!}z^{-k}+\frac{\Gamma(b)(-z)^{-a}}{\Gamma(b-a)}\sum_{k=0}^\infty \frac{a^{(k)}(a-b+1)^{(k)}}{k!}(-z)^{-k}
+\end{equation}
+
+A hullámfüggvény egyre normáltságát megkövetelve az $\mathcal{N}$ normálási tényezőre 
+\begin{equation}
+\mathcal{N}=e^{-\frac{1}{2}\pi\eta}\Gamma(1+i\eta)
+\end{equation}
+érték adódik. A gamma függvényre vonatkozó $\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)}$, valamint $\Gamma(1+i\eta)^{*}=\Gamma(1-i\eta)$ azonosságok felhasználásával, a normálási tényező négyzetére a következő adódik:
+\begin{equation}
+\abs{\mathcal{N}}^2=\frac{2\pi\eta}{e^{2\pi\eta}-1},
+\end{equation}
+amely az úgynevezett Gamow-faktor.
 \subsubsection{Háromrészecske}
+~\cite{Alt:1998nr}
 
 \subsection{A Coulomb-korrekciós integrál}
-
+\subsubsection{Kétrészecske}
+\subsubsection{Háromrészecske}
 \subsection{Adaptív Gauss–Kronrod módszer}\label{sec:GK}
 
 \subsection{Markov chain Monte Carlo módszerek}
 kézzel írott jegyzetet beírni
-\subsection{Monte Carlo módszer}
-\subsection{Markov lánc}
+\subsubsection{Monte Carlo módszer}
+\subsubsection{Markov lánc}
 Markov tulajdonság, grafikus model, faktorizál
 
 \subsection{Implementáció}
 \subsubsection{CUDA}\label{sec:CUDA}
 \subsubsection{MapReduce}\label{sec:MapReduce}
-
+\subsubsection{Háromrészecske Coulomb integrál közelítése}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a185.pdf}
