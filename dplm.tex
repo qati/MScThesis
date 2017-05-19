@@ -176,28 +176,28 @@ A Fourier-sor szinuszos részét nem szoktuk külön kezelni, mivel a mérések 
 
 \section{Bose-Einstein korrelációk}
 
-Bose-Einstein korrelációk vizsgálatának megalapozói Robert Hanbury Brown és Richard Q. Twiss volt, ők 1956-ban publikált cikkükben ~\cite{HanburyBrown:1956bqd} vezették be a módszert, azonban munkájuk vegyes fogadtatásban részesült a tudományos közösség részéről. A módszert segítségével képesek voltak meghatározni a Sirius csillag átmérőjét a fotonok közötti korrelációk méréséből. Mérési elrendezésük két változtatható távolságra levő foton detektorból állt (ezek egy-egy fókuszáló tányér és fotoelektron-sokszorozóból álltak). A két detektor segítségével mérték a Sirius csillagból jövő fotonok közti korrelációt, különböző detektortávolságokon. Az így kapott pontokra elméleti megfontolásokból kapott korrelációs függvényt illesztettek, amely segítségével meghatározták a csillag átmérőjét. A két tudós tiszteletére a bozonok közti intenzitás korrelációt szokás Hanbury Brown és Twiss effektusnak nevezni (vagy röviden HBT effektus), az ilyen jellegű vizsgálódásokat pedig HBT analízisnek.
+Bose-Einstein korrelációk vizsgálatának megalapozói Robert Hanbury Brown és Richard Q. Twiss volt, ők 1956-ban publikált cikkükben ~\cite{HanburyBrown:1956bqd} vezették be a módszert, azonban munkájuk vegyes fogadtatásban részesült a tudományos közösség részéről. A módszer segítségével képesek voltak meghatározni a Sirius csillag átmérőjét a fotonok közötti korrelációk méréséből. Mérési elrendezésük két változtatható távolságra levő foton detektorból állt (ezek egy-egy fókuszáló tányér és fotoelektron-sokszorozóból álltak). A két detektor segítségével mérték a Sirius csillagból jövő fotonok közti korrelációt, különböző detektortávolságokon. Az így kapott pontokra elméleti megfontolásokból kapott korrelációs függvényt illesztettek, amely segítségével meghatározták a csillag átmérőjét. A két tudós tiszteletére a bozonok közti intenzitás korrelációt szokás Hanbury Brown és Twiss effektusnak nevezni (vagy röviden HBT effektus), az ilyen jellegű vizsgálódásokat pedig HBT analízisnek.
 
 A HBT effektus részecskefizikai alkalmazásában jelentős szerepet játszott G. Goldhaber, S. Goldhaber, W.Y. Lee és A. Pais kutatása, akik proton-antiproton $1.05\;\mathrm{GeV/c}$ tömegközépponti energián történő ütköztetésekben keletkező pionokat vizsgáltak. Mérésük során azonos pionok között nem várt korrelációt tapasztaltak, melynek vizsgálatával felfedezték a $\rho^0$ rezonanciát, amely $4.5\cdot 10^{-24}$ másodperc alatt elbomlik két pionra ($\rho^0\rightarrow \pi^+\pi^-$), eredményüket 1960-ban publikálták ~\cite{Goldhaber:1960sf}. Később kiderült, hogy az általuk tapasztalt korrelációnak az oka, hogy a fotonokhoz hasonlóan a pionok is bozonok. Goldhaber és társai kutatása nyomán a részecskefizikában is beindult a HBT effektus vizsgálata. Későbbiekben kiderült, hogy az asztrofizikához hasonlóan ezek a korrelációk itt is információt hordoznak a forrás geometriájáról ~\cite{Padula:2004ba}. 
 
 
 \subsection{Definíció}
 
-Általánosan n részecske közti korrelációs függvény a következőképpen definiálható ~\cite{Alt:1999cs, Csorgo:1999sj}:
+Általánosan $n$ részecske közti korrelációs függvény a következőképpen definiálható ~\cite{Alt:1999cs, Csorgo:1999sj}:
 \begin{equation}
 C_n(p_1, p_2, \dots, p_n)=\frac{ N_n(p_1, p_2, \dots, p_n)  }{ N_1(p_1)N_1(p_2)\dots N_1(p_n)},
 \label{eq:Cn}
 \end{equation}
-ahol $p_i=(p_i^0, \bm{p_i})$ 4-es impulzusmomentum, $ N_n(p_1, p_2, \dots, p_n)$ az n részecske invariáns momentum eloszlás. A korrelációs függvény szemléletesen azt mondja meg, hogy milyen valószínűséggel keletkezik egy részecske n-es $p_1, p_2, \dots, p_n$ 4-es momentumokkal.
+ahol $p_i=(p_i^0, \bm{p_i})$ 4-es impulzusmomentum, $ N_n(p_1, p_2, \dots, p_n)$ az $n$ részecske invariáns momentum eloszlás. A korrelációs függvény szemléletesen azt mondja meg, hogy milyen valószínűséggel keletkezik egy részecske n-es $p_1, p_2, \dots, p_n$ 4-es momentumokkal.
 
-Az n részecske invariáns impulzusmomentum eloszlás meghatározható a következő módon:
+Az $n$ részecske invariáns impulzusmomentum eloszlás meghatározható a következő módon:
 \begin{equation}
 N_n(p_1, p_2, \dots, p_n) = \int \prod_{i=1}^{n}\mathcal{S}(p_i, x_i)\abs{\Psi_{p_1, {p_2}, \dots, {p_n}}({x_1}, {x_2}, \dots, {x_n})}^2\prod_{i=1}^{n}d^4 x_i,
 \label{eq:Nn}
 \end{equation}
-ahol a $\Psi_{p_1, {p_2}, \dots, {p_n}}({x_1}, {x_2}, \dots, {x_n})$ az n részecske hullámfüggvény, az $\mathcal{S}({p_i}, {x_i})$ pedig az úgynevezett forrásfüggvény, amely megadja annak a valószínűségét, hogy ${x_i}$ helyen keletkezik egy részecske ${p_i}$ impulzussal.
+ahol a $\Psi_{p_1, {p_2}, \dots, {p_n}}({x_1}, {x_2}, \dots, {x_n})$ az $n$ részecske hullámfüggvény, az $\mathcal{S}({p_i}, {x_i})$ pedig az úgynevezett forrásfüggvény, amely megadja annak a valószínűségét, hogy ${x_i}$ helyen keletkezik egy részecske ${p_i}$ impulzussal.
 
-Az n részecske hullámfüggvény meghatározásához nemrelativisztikus közelítést használunk HBT effektus vizsgálata során, így a függvényt a Schrödinger egyenlet megoldásából kapjuk (ügyelve, arra hogy mivel bozonjaink vannak, két részecske felcserélésére szimmetrikus legyen a hullámfüggvény):
+Az $n$ részecske hullámfüggvény meghatározásához nemrelativisztikus közelítést használunk HBT effektus vizsgálata során, így a függvényt a Schrödinger egyenlet megoldásából kapjuk (ügyelve, arra hogy mivel bozonjaink vannak, két részecske felcserélésére szimmetrikus legyen a hullámfüggvény):
 \begin{equation}
 i\hbar\frac{\partial \Psi(\bm{x_1},\dots, \bm{x_n},t )}{\partial t} = \Bigg[\sum_{i=1}^{n}\bigg(-\frac{\hbar^2}{2m_i}\Delta_i + V_i(\bm{x_i})\bigg) + \frac{1}{2}\sum_{i\neq j} V_{ij}(\bm{x_i},\bm{x_j})\Bigg]\Psi(\bm{x_1},\dots, \bm{x_n} ,t)
 \label{eq:Sch0}
@@ -262,7 +262,8 @@ C_2({p_1},{p_2}) = 1+ \frac{\tilde{\mathcal{S}}(2{k}, {p_1})\tilde{\mathcal{S^*}
 
 Szokás alkalmazni a ${p_1}\approx {p_2}\approx {K} = p_1+p_2$ közelítést ($q\ll K$), amelyet az indokol, hogy a  forrást Fourier transzformáltjának az egyes részecskék momentumától való függése sokkal simább mint a relatív momentumtól való függése ~\cite{Lisa:2005dd}. A kétrészecske korrelációs függvény ekkor: 
 \begin{equation}
-C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}(2{k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2}
+C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}({k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2}
+\label{eq:C02}
 \end{equation}
 
 Ez az alak azt a fontos üzenetet hordozza, hogy a kétrészecske korrelációs függvény meghatározásával megkapjuk a forrásfüggvény Fourier transzformáltját. Tehát a korrelációs függvény méréssel a forrás függvényt meg tudjuk határozni. 
@@ -352,18 +353,118 @@ A Lévy eloszlás meghatározása során kis és nagy értékekre ezen aszimptot
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.35]{pic/Coulomb/Levy_alpha.pdf}
-\includegraphics[scale=0.35]{pic/Coulomb/Levy_R.pdf}
+\includegraphics[scale=0.35]{pic/BEintro/Levy_alpha.pdf}
+\includegraphics[scale=0.35]{pic/BEintro/Levy_R.pdf}
 \caption{Háromdimenziós Lévy eloszlás sugárfüggése különböző $\alpha$ és $R$ paraméterek esetén.}
 \label{fig:Levy}
 \end{figure}
 
 \subsection{A mag-glória modell}
+A HBT effektus vizsgálata során nehéz ionokat ütköztetünk nagy energián. Az ütközés során létrejövő kvark-gluon plazma robbanásszerűen tágul (ezen tágulás leírására hidrodinamika alkalmazható), elérve egy kritikus hőmérsékletet fázisátmenet történik, hadronok fagynak ki pillanatszerűen. A hadronok közül munkánbana  töltött pionok közti korrelációt vizsgáltam, mivel ezen részecskékből keletkezik a legtöbb az ütközések során. A kirepülő pionokat az ütközési centrum köré épített detektorrendszerrel detektáljuk. Azonban pionok nem csak a forró kvarkanyag kifagyása során  keletkeznek, hanem később, instabil részecskék (pl. $\eta,\eta',\omega$) bomlásából is ~\cite{Bolz:1992hc}. Ezen jelenség leírására szolgál a mag-glória (core-halo) modell ~\cite{Csorgo:1994in,Csorgo:1999sj}, melynek szemléltetése ~\aref{fig:ch1} ábrán látható. A mag mérete $10$ femtométer alatti, míg a glória mérete több száz, vagy akár több ezer femtométer is lehet, mivel egyes hosszú élettartamú instabil részecskék ilyen távolságokra jutnak el mielőtt elbomlanának pionokra.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pic/BEintro/CH1}
+\caption{Mag-glória modell szemléltetése.}
+\label{fig:ch1}
+\end{figure}
+
+Mivel ~\aref{eq:C02} összefüggés alapján a korrelációs függvény a forrás Fourier transzformáltjával áll kapcsolatban, továbbá a glóriában a pionok nagy $x$ távolságokon keletkeznek, ezért a glória  kis relatív impulzusú tartományban ad járulékot a korrelációs függvényhez. Ugyanakkor a detektor impulzusfelbontása véges, ezért az egymáshoz nagyon közeli impulzussal rendelkező részecskék nem megkülönböztethetőek, azaz bizonyos relatív impulzus alatti tartományban (felbonthatatlan régió) nem tudjuk megmérni a korrelációs függvényt. Ezt az effektust szemlélteti ~\aref{fig:ch2} ábra.
+
+A mag-glória modellben feltételezünk egy magot valamint egy glóriát leíró forrásfüggvény lététezését. A teljes rendszert leíró forrásfüggvény pedig ezen kettő összege:
+\begin{equation}
+\mathcal{S}(x,p)=\mathcal{S}_M(x,p)+ \mathcal{S}_G(x,p)\Longrightarrow \mathcal{\tilde{S}}(k, K) = \mathcal{\tilde{S}}_M(k,K)+\mathcal{\tilde{S}}_G(k,k)
+\end{equation}
+
+Mivel a Fourier transzformált a nulla helyen megegyezik a függvény integráljával, továbbá a forrásfüggvény integrálja a keletkezett részecskék számát adja meg, ezért ha a magban keletkező részecskék száma $N_M$, a glóriában $N_G$, akkor:
+\begin{equation}
+\mathcal{\tilde{S}}_M(0,K) = N_M,\;\;\;\;\; 
+\mathcal{\tilde{S}}_G(0,K) = N_G,\;\;\;\;\;
+\mathcal{\tilde{S}}(0,K) = N_M+N_G
+\end{equation}
+
+A nagy (legalább $50$ fm) szélességű $\mathcal{S}_G$ keskeny $\mathcal{\tilde{S}}_G$ Fourier transzformáltat eredményez, melynek  szélessége maximálisan $4$ MeV. Ez a maximális szélesség a detektor véges felbontóképességéből adódó felbonthatatlan régióba esik tipikusan, ezért az mondható, hogy: $\mathcal{\tilde{S}}_G\approx 0$, azaz $\mathcal{\tilde{S}}=\mathcal{\tilde{S}}_M$. Ebből a kétrészecske korrelációs függvényre adódik:
+\begin{equation}
+C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}({k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2} =
+1+\frac{\abs{\tilde{\mathcal{S}}_M({k},{K})}^2}{\Big(N_M+N_G\Big)^2}
+ =
+  1+\lambda_2\frac{\abs{\tilde{\mathcal{S}}_M({k},{K})}^2}{\abs{\tilde{\mathcal{S}}_M(0,{K})}^2},
+\end{equation}
+ahol bevezettem a:
+\begin{equation}
+\lambda_2=\frac{N_M^2}{\Big(N_M+N_G\Big)^2} \equiv f_C^2
+\label{eq:CHlambda2}
+\end{equation}
+jelölést. Az összefüggésben bevezettem egy új mennyiséget, a mag arányt arányát, amely megmondja, hogy az összes észlelt részecske, hányad része származik a magból:
+\begin{equation}
+f_C=\frac{N_M}{N_M+N_G}
+\label{eq:fC}
+\end{equation}
+
+Tehát amíg ~\aref{eq:C02} egyenletben a $k\rightarrow 0$ esetben a korrelációs függvény $C_2(k,K)\rightarrow 2$, addig mag-glória modellben, a $2$ helyett a $1+\lambda_2$-höz tart a korrelációs függvény.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{pic/BEintro/CH2}
+\caption{Keskeny magból és széles glóriából álló forráshoz tartozó korrelációs függvény. A glória keskeny csúcsot eredményez a korrelációs függvényben, amely a detektor véges felbontásának következtében nem látható.}
+\label{fig:ch2}
+\end{figure}
+
 
 \subsection{A korreláció erőssége}
+A mag-glória modellnél láttuk, hogy a kétrészecske korrelációs függvény kis relatív impulzusokra tart ~\aref{eq:CHlambda2} egyenlet által definiált $\lambda_2$ paraméter által meghatározott $1+\lambda_2$ értékhez. Ezt a paramétert szokás kétrészecske korrelációs erősségnek nevezni.
+
+Ebből kiindulva általánosan definiálhatjuk az $n$ részecske korrelációs erősséget:
+\begin{equation}
+\lambda_n = \lim_{k_1\rightarrow 0}\dots\lim_{k_n\rightarrow 0}C_n(k_1,\cdots,k_n)-1
+\label{eq:lambdan}
+\end{equation}
+
+Mag-glória modell esetén az $n$ részecske korrelációs erősség kifejezhető ~\aref{eq:fC} összefüggéssel definiált magarány segítségével a következőképpen ~\cite{Csorgo:1997uf}:
+\begin{equation}
+\lambda_n =\sum_{j=1}^n\binom{n}{j}\alpha_j f_C^j
+\label{eq:CHlambdan}
+\end{equation}
+
+Az egyenletben szereplő $\alpha_j$ paraméter a következőképpen határozható meg:
+\begin{equation}
+\alpha_n = n!-1-\sum_{j=1}^{n-1}\binom{n}{j}\alpha_j,
+\label{eq:alphan}
+\end{equation}
+
+első néhány értéke: $\alpha_1=0,\;\alpha_2=1\;\alpha_3=2$.
 
 \subsection{Parciális koherencia}
-kappa3
+
+Az eddigiekben feltettük, hogy a forrás teljesen kaotikus, a kifagyott pionok fázisa teljesen véletlenszerű. Azonban előfordulhat, hogy a kifagyott részecskepárok fáziskülönbsége részben állandó, azaz a forrás részben koherens módon kelt részecskéket. Ezt az effektust nevezik parciális koherenciának ~\cite{Csorgo:1998tn, Csorgo:1999sj, Csorgo:1997uf}. Ekkor a momentum eloszlást másképp kell számolni, hiszen ~\aref{eq:Nn} összefüggésben már kihasználtuk, hogy a részecskék fázisa véletlenszerű, melynek következtében átlagolás során eltűnik. 
+
+Az effektust mag-glória modellnél látottakhoz hasonló módon történő figyelembevétele érdekében bevezetjük a koherencia arányát, amely megadja, hogy a magból származó részecskék hányad része keletkezett koherens módon:
+\begin{equation}
+p_C = \frac{N_M^C}{N_M}
+\end{equation}
+
+Mag-glória modellnél láttuk, hogy amennyiben a részecskék nem csak közvetlenül a forró kvarkanyagból származnak, akkor az $n$ részecske korrelációs erősségek függeni fognak ~\aref{eq:fC} egyenlet által definiált magaránytól ~\aref{eq:CHlambdan} egyenlet által meghatározott módon. Ehhez hasonlóan, azt mondhatjuk, hogy amennyiben részecske keletkezés során van parciális koherencia, akkor az $n$ részecske korrelációs erősség függeni fog a magarány mellett a koherencia arányától a következő módon ~\cite{Csorgo:1998tn, Csorgo:1997uf}:
+
+\begin{equation}
+\lambda_n(f_C, p_C) = \sum_{j=2}^{n}\binom{n}{j}\alpha_j f_C^j\big[(1-p_C)^j+jp_C(1-p_C)^{j-1}\big],
+\end{equation}
+ahol az $\alpha_j$ paramétert ~\aref{eq:alphan} egyenlet határozza meg. Az egyenlet két- és háromrészecske esetén a következőkre egyszerűsödik:
+
+\begin{equation}
+\lambda_2 =  f_C^2\big[(1-p_C)^2+2p_C(1-p_C)\big]
+\end{equation}
+
+\begin{equation}
+\lambda_3 =  2f_C^3\big[(1-p_C)^3+3p_C(1-p_C)^2\big]+3f_C^2\big[(1-p_C)^2+2p_C(1-p_C)\big]
+\end{equation}
+
+Ezen két egyenlet mutatja, hogy két- és háromrészecske korrelációk vizsgálatából amennyiben meghatározzuk a korrelációs erősségeket, meghatározható az $f_C$ és $p_C$ paraméter, azaz a magból származó részecskék aránya, illetve a magban koherens módon keletkezett részecskék aránya.
+
+Koherencia létének vizsgálata érdekében vezessük be a következő paramétert:
+\begin{equation}
+\kappa_3 = \frac{\lambda_3-3\lambda_2}{2\sqrt{\lambda_2^3}}
+\end{equation}
+Ez a paraméter nem függ az $f_C$ értékétől, mag-glória modell esetén koherencia hiányában konstans $\kappa_3=1$ lesz. Amennyiben van parciális koherencia, ezen paraméter nem lesz konstans, függeni fog a $p_C$ paramétertől.
+
 
 \section{Coulomb-korrekció számítása}
 Háromrészecske: ~\cite{Alt:1998nr}
