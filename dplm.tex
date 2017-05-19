@@ -176,7 +176,7 @@ A Fourier-sor szinuszos részét nem szoktuk külön kezelni, mivel a mérések 
 
 \section{Bose-Einstein korrelációk}
 
-Bose-Einstein korrelációk vizsgálatának megalapozói Robert Hanbury Brown és Richard Q. Twiss volt, ők 1956-ban publikált cikkükben ~\cite{HanburyBrown:1956bqd} vezették be a módszert, azonban munkájuk vegyes fogadtatásban részesült a tudományos közösség részéről. A módszert segítségével képesek voltak meghatározni a Sirius csillag átmérőjét a fotonok közötti korrelációk méréséből. Mérési elrendezésük két változtatható távolságra levő foton detektorból állt (ezek egy-egy fókuszáló tányér és fotoelektron sokszorozóból álltak). A két detektor segítségével mérték a Sirius csillagból jövő fotonok közti korrelációt, különböző detektortávolságokon. Az így kapott pontokra elméleti megfontolásokból kapott korrelációs függvényt illesztettek, amely segítségével meghatározták a csillag átmérőjét. A két tudós tiszteletére a bozonok közti intenzitás korrelációt szokás Hanbury Brown és Twiss effektusnak nevezni (vagy röviden HBT effektus), az ilyen jellegű vizsgálódásokat pedig HBT analízisnek.
+Bose-Einstein korrelációk vizsgálatának megalapozói Robert Hanbury Brown és Richard Q. Twiss volt, ők 1956-ban publikált cikkükben ~\cite{HanburyBrown:1956bqd} vezették be a módszert, azonban munkájuk vegyes fogadtatásban részesült a tudományos közösség részéről. A módszert segítségével képesek voltak meghatározni a Sirius csillag átmérőjét a fotonok közötti korrelációk méréséből. Mérési elrendezésük két változtatható távolságra levő foton detektorból állt (ezek egy-egy fókuszáló tányér és fotoelektron-sokszorozóból álltak). A két detektor segítségével mérték a Sirius csillagból jövő fotonok közti korrelációt, különböző detektortávolságokon. Az így kapott pontokra elméleti megfontolásokból kapott korrelációs függvényt illesztettek, amely segítségével meghatározták a csillag átmérőjét. A két tudós tiszteletére a bozonok közti intenzitás korrelációt szokás Hanbury Brown és Twiss effektusnak nevezni (vagy röviden HBT effektus), az ilyen jellegű vizsgálódásokat pedig HBT analízisnek.
 
 A HBT effektus részecskefizikai alkalmazásában jelentős szerepet játszott G. Goldhaber, S. Goldhaber, W.Y. Lee és A. Pais kutatása, akik proton-antiproton $1.05\;\mathrm{GeV/c}$ tömegközépponti energián történő ütköztetésekben keletkező pionokat vizsgáltak. Mérésük során azonos pionok között nem várt korrelációt tapasztaltak, melynek vizsgálatával felfedezték a $\rho^0$ rezonanciát, amely $4.5\cdot 10^{-24}$ másodperc alatt elbomlik két pionra ($\rho^0\rightarrow \pi^+\pi^-$), eredményüket 1960-ban publikálták ~\cite{Goldhaber:1960sf}. Később kiderült, hogy az általuk tapasztalt korrelációnak az oka, hogy a fotonokhoz hasonlóan a pionok is bozonok. Goldhaber és társai kutatása nyomán a részecskefizikában is beindult a HBT effektus vizsgálata. Későbbiekben kiderült, hogy az asztrofizikához hasonlóan ezek a korrelációk itt is információt hordoznak a forrás geometriájáról ~\cite{Padula:2004ba}. 
 
@@ -232,39 +232,48 @@ ahol $\sum_{(\alpha)}$ az $(1,2,\dots,n)$ összes permutációjára való össze
 
 \subsection{Két nem kölcsönható részecske korrelációs függvénye}
 
-Két részecske esetén, nem kölcsönható esetben ~\aref{eq:Sch} egyenlet könnyedén megoldható, megoldásai a jól ismert síkhullámok. A kétrészecskés invariáns impulzuseloszlásban szereplő hullámfüggvény szimmetrizáció elvégzése után a következő lesz:
+Két azonos részecske esetén, nem kölcsönható esetben ~\aref{eq:Sch} egyenlet könnyedén megoldható, megoldásai a jól
+ismert síkhullámok. A kétrészecskés invariáns impulzuseloszlásban szereplő hullámfüggvény szimmetrizáció
+elvégzése után a következő lesz:
 \begin{equation}
-\abs{\Psi_{{p_1}{p_2}}(\bm{x_1},\bm{x_2})} = \frac{1}{\sqrt{2}}\abs{e^{i\bm{p_1x_1}+i\bm{p_2x_2}}+e^{i\bm{p_2x_1}+i\bm{p_1x_2}}}
+\Psi_{{p_1}{p_2}({x_1},{x_2})} = \frac{1}{\sqrt{2}}\big({e^{{ip_1x_1}+i{p_2x_2}}+e^{i{p_2x_1}+i{p_1x_2}}}\big)
 \end{equation}
 
-A $\bm{K}=\bm{p_1+p_2}$, $\bm{k}=\frac{\bm{p_1-p_2}}{2}$, $\bm{r}=\bm{x_1-x_2}$, $\bm{R}=\frac{\bm{x_1+x_2}}{2}$ változókra áttérve (ezen transzformáció esetén az integrálási mérték nem változik, hiszen $d^3x_1d^3x_2=d^3Rd^3r$) a hullámfüggvény a következő alakra egyszerűsödik:
+A ${K}={p_1+p_2}$, ${k}=\frac{{p_1-p_2}}{2}$, ${r}={x_1-x_2}$, ${R}=\frac{{x_1+x_2}}{2}$ változókra áttérve (ezen transzformáció esetén az integrálási mérték nem változik, hiszen $d^4x_1d^4x_2=d^4Rd^4r$) a hullámfüggvény abszolút értéke a következő alakra egyszerűsödik:
 \begin{equation}
-\abs{\Psi_{{p_1}{p_2}}(\bm{r},\bm{R})} = \frac{1}{\sqrt{2}}\abs{e^{i\bm{KR}}(e^{i\bm{kr}}+e^{-i\bm{kr}})}=\sqrt{2}\abs{\cos{2\bm{kr}}}
+\abs{\Psi_{{p_1}{p_2}}({r},{R})} = \frac{1}{\sqrt{2}}\abs{e^{{KR}}(e^{i{kr}}+e^{-i{kr}})}=\sqrt{2}\abs{\cos{2{kr}}}
 \end{equation}
 
 Ebből következőleg a kétrészecske invariáns momentumeloszlásra a következő alak adódik):
 \begin{equation}
-N_2({p_1},{p_2})=\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})+\frac{1}{2}\big(\tilde{\mathcal{S}}(2\bm{k}, {p_1})\tilde{\mathcal{S^*}}(2\bm{k}, {p_2})+\tilde{\mathcal{S^*}}(2\bm{k},{ p_1})\tilde{\mathcal{S}}(2\bm{k}, {p_2})\big),
+N_2({p_1},{p_2})=\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})+\frac{1}{2}\big(\tilde{\mathcal{S}}(2{k}, {p_1})\tilde{\mathcal{S^*}}(2{k}, {p_2})+\tilde{\mathcal{S^*}}(2{k},{ p_1})\tilde{\mathcal{S}}(2{k}, {p_2})\big),
 \end{equation}
 
 ahol $\tilde{\mathcal{S}}$ a forrásfüggvény Fourier transzformáltja:
 \begin{equation}
-\tilde{\mathcal{S}}(\bm{q}, {k})=\int d^4x\mathcal{S}(x,k)e^{i\bm{qx}}
+\tilde{\mathcal{S}}({q}, {k})=\int d^4x\mathcal{S}(x,k)e^{i{qx}}
 \end{equation}
 
 Az egyrészecske invariáns momentumeloszlásra pedig $N_1({p})=\tilde{\mathcal{S}}(0, {p})$ adódik. Ezekből ~\aref{eq:Cn} definíciót használva a kétrészecske korrelációs függvényre kapjuk a következő alakot:
 
 \begin{equation}
-C_2({p_1},{p_2}) = 1+ \frac{\tilde{\mathcal{S}}(2\bm{k}, {p_1})\tilde{\mathcal{S^*}}(2\bm{k}, {p_2})+\tilde{\mathcal{S^*}}(2\bm{k},{ p_1})\tilde{\mathcal{S}}(2\bm{k}, {p_2})}{2\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})}
+C_2({p_1},{p_2}) = 1+ \frac{\tilde{\mathcal{S}}(2{k}, {p_1})\tilde{\mathcal{S^*}}(2{k}, {p_2})+\tilde{\mathcal{S^*}}(2\bm{k},{ p_1})\tilde{\mathcal{S}}(2\bm{k}, {p_2})}{2\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})}
 \end{equation}
 
-Szokás alkalmazni a ${p_1}\approx {p_2}\approx {K} = p_1+p_2$ közelítést ($q\ll K$), amelyet az indokol, hogy a  forrást Fourier transzformáltjának az egyes részecskék momentumától való függése sokkal simább mint a relatív momentumtól való függése ~cite{Lisa:2005dd}. A kétrészecske korrelációs függvény ekkor: 
+Szokás alkalmazni a ${p_1}\approx {p_2}\approx {K} = p_1+p_2$ közelítést ($q\ll K$), amelyet az indokol, hogy a  forrást Fourier transzformáltjának az egyes részecskék momentumától való függése sokkal simább mint a relatív momentumtól való függése ~\cite{Lisa:2005dd}. A kétrészecske korrelációs függvény ekkor: 
 \begin{equation}
-C_2(\bm{k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}(2\bm{k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2}
+C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}(2{k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2}
 \end{equation}
 
 Ez az alak azt a fontos üzenetet hordozza, hogy a kétrészecske korrelációs függvény meghatározásával megkapjuk a forrásfüggvény Fourier transzformáltját. Tehát a korrelációs függvény méréssel a forrás függvényt meg tudjuk határozni. 
 
+
+A korrelációs függvény a $k,K$ négyes impulzusok helyett hármas momentumokkal is kifejezhető, ugyanis a két négyesmomentum szorzata definíció és az egyes részecskék tömeghéj feltétele ($p_{i\mu}p^{\mu}_i=0$) alapján eltűnik, azaz:
+\begin{equation}
+0=kK=k_0K_0-\bm{kK}\Rightarrow k_0 = \frac{\bm{kK}}{K_0}
+\end{equation}
+
+A $p_1\approx p_2\approx K$ feltevés alapján a $K$ körülbelül tömeghéjon van, azaz $K_0 = \sqrt{m^2-\bm{K}^2}$, így a korrelációs függvény a $k,K$ négyes-momentumok helyett a $\bm{k},\bm{K}$ hármas-momentumok függvényeként is tekinthető.
 
 \subsection{Forrás függvény}
 ~\Aref{eq:Nn} egyenletben szereplő $\mathcal{S}({p},{x})$ függvényt nevezzük forrásfüggvénynek, ez megadja annak a valószínűségét, hogy ${x}$ helyen keletkezik egy ${p}$ impulzusú részecske. Az általunk vizsgált energiákon, az ütközés során kvark-gluon plazma keletkezik, amely robbanásszerűen tágul, melynek következtében csökken a hőmérséklete. Ha lokálisan a QGP elér egy bizonyos hőmérsékletet, akkor fázisátmenet történik, kifagynak a kvark szabadsági fokok és hadronok keletkeznek. A forrásfüggvényt épp ezen fázisátmenetek határozzák meg. 
@@ -283,7 +292,7 @@ ahol az $R_{\mathrm{long}},R_{\mathrm{side}},R_{\mathrm{out}}$ az úgynevezett H
 R_{\mathrm{out}}^2-R_{\mathrm{side}}^2\propto \Delta\tau^2
 \end{equation}
 
-Kísérleti tapasztalat továbbá, hogy $R_{\mathrm{out}}\approx R_{\mathrm{side}}$, ebből következőleg a $\Delta\tau\approx 0$, tehát, a  forrásfüggvény időfüggő része egy $\tau_0$-ra koncentrált Dirac-delta, azaz a fázisátmenet pillanatszerűen történik ~\cite{Ster:2010ia}.
+Kísérleti tapasztalat továbbá, hogy $R_{\mathrm{out}}\approx R_{\mathrm{side}}$, ebből következőleg a $\Delta\tau\approx 0$, tehát, a  forrásfüggvény időfüggő része egy $\tau_0$-ra koncentrált Dirac-delta, azaz a fázisátmenet pillanatszerűen történik ~\cite{Ster:2010ia, Csorgo:1999sj, Csanad:2009wc}.
 
 %~\Aref{eq:Psin} egyenletnél láttuk, hogy az invariáns momentum eloszlásban megjelenő hullámfüggvény időfüggetlen.
 
