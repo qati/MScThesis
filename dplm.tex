@@ -6,6 +6,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{anysize}
 \usepackage{bm}
 \usepackage{physics}
@@ -18,6 +19,8 @@
 \usepackage{environ}
 
 
+\newtheorem{definition}{Definíció}[section]
+\newtheorem{theorem}{Tétel}[section]
 
 \newcounter{nextsec}
 \newcommand\nextsection{%
@@ -692,12 +695,115 @@ Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{
 \mathcal{L}(3\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
 \end{equation}
 
-\subsection{Adaptív Gauss–Kronrod módszer}\label{sec:GK}
 
-\subsection{Markov chain Monte Carlo módszerek}
-kézzel írott jegyzetet beírni
+\subsection{Gauss–Kronrod integrálási módszer}\label{sec:GK}
+
+\Aref{eq:Levyint} integrál numerikus kiszámolásához Gauss-Kronrod módszert használtam, mivel ezen módszer használatával érhetünk el nagyon pontos eredményt hatékonyan  ~\cite{LevyEff}. Az integrálás tartománya a teljes tér, amely az cél hiba megadásával végessé tehető a következőképpen: az integrálási tartományt folyamatosan növeljük, amíg hibán belül az érték nem konvergál. 
+
+Az $n$-ed rendű Gauss-kvadratúra $[-1,1]$ tartományon (konvenció szerint ezen a tartományon van megadva a szabály) vett integrált n speciálisan választott pont lineáris kombinációjával becsli:
+\begin{equation}
+\int_{-1}^1 f(x)dx\approx \sum_{i=1}^n w_if(x_i),
+\end{equation}
+ahol a $w_i, x_i$ pontok úgy vannak megválasztva, hogy, $2n-1$ vagy ennél alacsonyabb rendű polinomok esetén egzakt eredményt adjon. A módszer jó közelítő eredményt fog adni minden olyan függvényre ami legfeljebb $2n-1$-ed rendű polinommal közelíthető. A formulában szereplő $x_i$ pontok az $n$-ed rendű Legendre polinom gyökei, azaz őket a $P_n(x_i)=0$ egyenlet definiálja, a súlyokat pedig a következőképpen kell meghatározni (\cite{LGQ}):
+
+\begin{equation}
+w_i=\frac{2}{(1-x_i)^2(P_n'(x_i))^2}
+\end{equation}
+
+Amennyiben az integrálandó függvény $f(x)=\omega(x)g(x)$ alakban áll elő, ahol $g(x)$ egy polinom, akkor új súlyokat vezethetünk be amelyeket az $\omega(x)$ határoz meg, így egy pontosabb közelítő formulát konstruálva. Például ha $\omega(x)=\exp(-x^2)$, akkor a pontokat a Hermite polinom gyökeinek választva és a súlyokat szintén a Hermite polinomokból meghatározva kapunk pontos közelítő formulát $f(x)\exp(-x^2)$ alakú integrál meghatározására (az $f(x)$ itt is legfeljebb $2n-1$-ed rendű lehet).
+
+A Gauss-Kronrod módszer a Gauss módszert egészíti ki, úgy, hogy az $n$-ed rendű Gauss szabály pontjaihoz hozzáad, $n+1$ további pontot, így kapva egy $2n+1$ rendű pontosabb becslést. A módszer lényege, hogy a kevésbé pontos, alacsonyabb rendű módszer pontjait fel lehet használni, egy magasabb rendű módszernél. Az $n+1$ új pont a Stieltjes polinomok (\cite{NIST:DLMF}) határozzák meg. Az alacsonyabb és magasabb rendű becslések közti különbség használható hibabecslésre, amely felhasználható adaptív lépéshossz meghatározásánál (én a munkám során ezt az utat követtem). 
+
+
+\subsection{Markov-lánc Monte Carlo módszerek}
+
+A Coulomb integrál számítására a Markov-lánc Monte Carlo módszert választottuk, mivel ezen módszer segítségével hatékonyabban tudjuk számolni a magasdimenziós integrálokat.
+
 \subsubsection{Monte Carlo módszer}
-\subsubsection{Markov lánc}
+
+A Monte Carlo integrálási módszerek tipikusan a következő alakú  $D$ dimenziós integrálok esetén bukkannak fel:
+\begin{equation}
+I=\int_\Omega f(x)g(x) dx,
+\end{equation}
+ahol $\Omega$ az integrálási tartomány, $dx$ a $D$ dimenziós integrálási mérték. Amennyiben $\int_\Omega g(x)dx = C$ vezessük be a következő függvényt: $p(x)=g(x)/C$. Triviálisan módon a keresett integrál: 
+\begin{equation}
+I=C\int_\Omega f(x)p(x)dx \equiv C\langle f \rangle_p,
+\end{equation}
+ahol  $\langle \cdot \rangle_p$ a $p$ eloszlással számolt várható értéket jelöli.
+A $p(x)$ valószínűségi eloszlás szerint válasszunk N pontot a terünkből, ezen pontokat jelöljék $x_1,\dots,x_N\in\Omega$ változók. Ezen minta segítségével becsülhetjük a várható értéket:
+
+\begin{equation}
+\bar{I}_N = C\frac{1}{N}\sum_{i=1}^N f(x_i)\equiv C\bar{f}
+\label{eq:IN}
+\end{equation} 
+
+A nagy számok erős törvénye alapján a minta várható érték majdnem biztosan tart a várható értékhez:
+\begin{equation}
+\mathcal{P}\Big(\lim_{N\rightarrow\infty}\bar{I}_N=I\Big)=1,
+\end{equation}
+ahol $\mathcal{P}$ jelöli a valószínűséget, azaz végtelen sok pontot véve $0$ a valószínűsége, hogy az integrál becslése rossz. Azonban numerikus számolás során valamekkora véges $N$-et kell választanunk, és fontos tudnunk, hogy a pontok számának a növelésével, hogy változik hiba. Ezen kapcsolat meghatározása érdekében az $\bar{I}_{N}$-et tekinthetjük valószínűségi változónak, amelynek van valamekkora $\sigma({\bar{I}_N})$ szórása, amely a következőképpen számolható:
+\begin{equation}
+\sigma^2({\bar{I}_N})=\frac{C^2}{N^2}\sum_{i=1}^N\sigma^2(f)=\frac{C^2\sigma^2(f)}{N}\Longrightarrow \sigma(\bar{I}_N)=\frac{C\sigma(f)}{\sqrt{N}},
+\end{equation}
+ahol a $\sigma(f)$ becsülhető a mintából a következő módon:
+\begin{equation}
+\sigma(f)=\frac{1}{N-1}\sum_{i=1}^N\big(f(x_i)-\bar(f)\big)^2
+\end{equation}
+Tehát a hiba a pontok számának a gyökével csökken.
+
+Amennyiben $g(x)=1$, egyenletes eloszlással mintavételezhettük és az integrál értéke $I=V\bar{f}$ lesz, ahol $V=\int_\Omega dx$.
+
+\subsubsection{Markov-lánc}
+
+\begin{definition}
+Az $X_1,\dots,X_N$ ($\Omega$ értékű) valószínűségi változók sorozatát Markov-láncnak nevezzük, ha minden $n$ és $x_1,\dots,x_{n+1}\in\Omega$ esetén teljesül az úgynevezett Markov tulajdonság:
+\begin{equation}
+\mathcal{P}(X_{n+1}=x_{n+1}|X_n=x_n,\dots,X_1=x_n)=\mathcal{P}(X_{n+1}=x_{n+1}|X_n=x_n)
+\end{equation}
+\end{definition}
+
+\begin{definition}
+Az $X_1,\dots,X_N$ Markov-láncot homogénnek nevezünk, akkor ha $\forall i,\;\forall a,b\in\Omega: \mathcal{P}(X_{i+1}=a|X_{i}=b)=T_{ab}$. A $T$ mátrixot szokás sztochasztikus mátrixnak nevezni ($\sum_{b\in Omega}T_{ab}=1$).
+\end{definition}
+
+
+\begin{definition}
+Az $X_1,\dots,X_N$ Markov-lánc irreducibilis, ha $\forall a,b\in\Omega$: $\exists i\geq 0$ úgy, hogy $\mathcal{P}(X_i=a|X_{0}=b)>0$.
+\end{definition}
+
+\begin{definition}
+Egy $X_1,\dots,X_N$ Markov-láncban, $a\in \Omega$ elemnek, van periódusa, és ez $k(a)$, ha az elembe való visszatérés $k$ többszörös lépésben történik. Azaz:
+\begin{equation}
+k(a)=\mathrm{LNKO}\{i>0: \mathcal{P}(X_i=a|X_0=a)>0\},
+\end{equation} 
+ahol LNKO a legnagyobb közös osztót jelenti.
+\end{definition}
+
+\begin{definition}
+Egy $X_1,\dots,X_N$ Markov-lánc aperiodikus, ha $\forall a\in\Omega$: $k(a)=1$
+\end{definition}
+
+\begin{definition}
+Egy $\Omega$-n értelmezett $p$ eloszlás stacionárius, ha
+\begin{equation}
+\sum_{a\in\Omega}p_aT_{ab}=p_b,\;\;\;\;\forall b\in\Omega
+\end{equation}
+\end{definition}
+
+\begin{theorem}{Ergodicitás tétel Markov láncokra.}
+Legyen $X_1,\dots$ egy irreducibilis, homogén Markov-lánc és az $X_i$-k $p$ eloszlása stacionárius, ekkor
+\begin{equation}
+\mathcal{P}\Bigg(\lim_{N\rightarrow\infty}\frac{1}{N}\sum_{i=1}^Nf(X_i)-\langle f \rangle_p\Bigg)=1
+\end{equation}
+Amennyiben a lánc még aperiodikus is, akkor $\forall a,b\in\Omega$ esetén teljesül: 
+\begin{equation}
+\lim_{n\rightarrow\infty}\mathcal{P}(X_n=a|X_0=b) = p(a),
+\end{equation}
+azaz nem számít a lánc kezdőpontja.
+\end{theorem}
+
+
+\subsubsection{Metropolis algoritmus}
 Markov tulajdonság, grafikus model, faktorizál
 
 \subsection{Implementáció}
