@@ -492,12 +492,13 @@ A Bose-Einstein analízis során kizárólag a Bose-Einstein statisztika követk
 A Coulomb-korrekciós faktor definiciója $n$ részecske esetén a következő ~\cite{Alt:2001dj}:
 
 \begin{equation}
-K(\bm{k}_1,\dots,\bm{k}_n)=
+K(\bm{p}_1,\dots,\bm{p}_n)=
 \frac{
-\int \prod_{i=1}^n\mathcal{S}(\bm{k}_i, \bm{r}_i)
-\abs{\Psi^{0}_{\bm{k_1},\dots,\bm{k_n}}(\bm{r_1},\dots,\bm{r_n})}\prod_{i=1}^n d^3 \bm{r}_i
-}{\int \prod_{i=1}^n\mathcal{S}(\bm{k}_i, \bm{r}_i)
-\abs{\Psi^\mathcal{C}\bm{k_1},\dots,\bm{k_n}}(\bm{r_1},\dots,\bm{r_n})\prod_{i=1}^n d^3 \bm{r}_i},
+\int \prod_{i=1}^n\mathcal{S}(\bm{p}_i, \bm{x}_i)
+\abs{\Psi^{0}_{\bm{p_1},\dots,\bm{p_n}}(\bm{x_1},\dots,\bm{x_n})}\prod_{i=1}^n d^3 \bm{x}_i
+}{\int \prod_{i=1}^n\mathcal{S}(\bm{p}_i, \bm{x}_i)
+\abs{\Psi^\mathcal{C}\bm{p_1},\dots,\bm{p_n}}(\bm{x_1},\dots,\bm{x_n})\prod_{i=1}^n d^3 \bm{x}_i},
+\label{eq:Kn}
 \end{equation}
 ahol a $\Psi^0$ szabad hullámfüggvény, a $\Psi^\mathcal{C}$ pedig a Coulomb hullámfüggvény.
 
@@ -511,7 +512,7 @@ alakot ölti, ahol a relatív momentumtól függő hullámfüggvényre a Schröd
 \begin{equation}
 \bigg[-\frac{\hbar^2}{2\mu}\Delta_{\bm{r}}+V_\mathcal{C}(\bm{r})+\frac{\hbar^2\bm{k}^2}{2\mu}\bigg]\Psi(\bm{r})=0,
 \end{equation}
-ahol $\mu=\frac{m}{2}$ a redukált tömeg, $V_\mathcal{C}$ pedig a Coulomb potenciál.
+ahol $\mu=\frac{m}{2}$ a redukált tömeg, $V_\mathcal{C}$ pedig a Coulomb potenciál \big($V_\mathcal{C}(\bm{r}) = -\frac{1}{4\pi\epsilon_0}\frac{e^2}{\abs{\bm{r}}}$\big).
 
 Az egyenletet megoldva (\cite{Landau3}) valamint elvégezve a szimmetrizációt(részecskék felcserélésének szimmetriája: $\bm{r}\rightarrow -\bm{r}$) a következő adódik a hullámfüggvényre:
 \begin{equation}
@@ -547,11 +548,150 @@ A hullámfüggvény egyre normáltságát megkövetelve az $\mathcal{N}$ normál
 \end{equation}
 amely az úgynevezett Gamow-faktor.
 \subsubsection{Háromrészecske}
-~\cite{Alt:1998nr}
+
+A háromrészecske Coulomb korrekció meghatározásához a háromrészecske Coulomb problémát kellene megoldani, azaz a következő Schrödinger egyenletet ~\cite{Alt:1998nr}:
+\begin{equation}
+\Bigg[H_0+\sum_{i<j=1}^3V^{\mathcal{C}}_{ij}(\bm{r}_{ij})
+-\sum_{i=1}^3\frac{\hbar^2 k^2_i}{2m_i}
+\Bigg]\Psi_{\bm{k}_{12}, \bm{k}_{13}, \bm{k}_{23}}(\bm{r}_{12},\bm{r}_{13},\bm{r}_{23}) = 0,
+\end{equation}
+azzal az egyszerűsítéssel, hogy azonos részecskékről lévén szó teljesül: $m_i=m$ és $V^\mathcal{C}_{ij}(\bm{r}_{ij})=V^\mathcal{C}(\bm{r}_{ij})=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{\abs{\bm{r}_{ij}}}$ ($\bm{r}_{ij},\;\bm{k}_{ij}$ a relatív változók). Azonban az egyenletnek csupán aszimptotikus egzakt megoldása van. Ezért Bose-Einstein korrelációk vizsgálata során a háromrészecske Coulomb kölcsönhatást úgy vesszük figyelemben, mint három független kétrészecske kölcsönhatást, azaz a hullámfüggvényt a következőképpen állítjuk elő : ~\cite{Alt:1998nr}
+\begin{equation}
+\Psi_{\bm{k}_{12}, \bm{k}_{13}, \bm{k}_{23}}(\bm{r}_{12},\bm{r}_{13},\bm{r}_{23})  \sim
+\Psi_{\bm{k}_{12}}(\bm{r}_{12})\Psi_{\bm{k}_{13}}(\bm{r}_{13})\Psi_{\bm{k}_{23}}(\bm{r}_{23}),
+\end{equation}
+
+ahol $\Psi_{\bm{k}_{12}}(\bm{r}_{12})$ a kétrészecske Coulomb probléma megoldása. Tehát a következő Schrödinger egyenletet elégíti ki:
+\begin{equation}
+\Bigg[-\frac{\hbar^2}{2\mu}\Delta_{\bm{r}_{ij}}+V^\mathcal{C}(\bm{r}_{ij})-\frac{\hbar^2 \bm{k}^2_{ij}}{2\mu}
+\Bigg]\Psi_{\bm{k}_{ij}}(\bm{r}_{ij})=0,
+\end{equation}
+ahol $\mu$ a redukált tömeg (pion tömeg fele), valamint a $\bm{k}_{ij}$ az $i,j$ részecskepár relatív momentumának a fele. Az egyenlet megoldása:
+
+\begin{equation}
+\Psi_{\bm{k}_{ij}}(\bm{r}_{ij}) = \mathcal{N}_{ij}e^{i\bm{k}_{ij}\bm{r}_{ij}}F(-i\eta_{ij},1,i(k_{ij}r_{ij}-\bm{k}_{ij}\bm{r}_{ij})),\;\;\;\;\;\;
+\mathcal{N}_{ij}=e^{-\frac{\pi}{2}\eta_{ij}}\Gamma(1+i\eta_{ij}),
+\end{equation}
+ahol $\eta_{ij}=\frac{\mu\alpha}{2k_{ij}}$. Azonban annak érdekében, hogy ezt a megoldást használhassuk a háromrészecske hullámfüggvényben, a következő módosítást kell végrehajtani  ~\cite{Alt:1998nr,Biyajima:2003ey, Mizoguchi:2000km}:
+
+\begin{equation}
+\Psi_{\bm{k}_{ij}}(\bm{r}_{ij}) = \mathcal{N}_{ij}e^{i\frac{2}{3}\bm{k}_{ij}\bm{r}_{ij}}F(-i\eta_{ij},1,i(k_{ij}r_{ij}-\bm{k}_{ij}\bm{r}_{ij}))
+\label{eq:Psikij}
+\end{equation}
+\Aref{eq:Psikij} egyenlet által megadott hullámfüggvényt a három relatív koordinátában véve és összeszorozva, valamint a szimmetrizációt elvégezve megkaphatjuk a háromrészecske Bose-Einstein korrelációk vizsgálatánál használt Coulomb hullámfüggvényt:
+\begin{equation}
+\begin{aligned}
+\Psi_{\bm{k}_{12}, \bm{k}_{13}, \bm{k}_{23}}(\bm{r}_{12},\bm{r}_{13},\bm{r}_{23})  = \frac{1}{\sqrt{6}}\Bigg[
+\Psi_{\bm{k}_{12}}(\bm{r}_{12})\Psi_{\bm{k}_{13}}(\bm{r}_{13})\Psi_{\bm{k}_{23}}(\bm{r}_{23})+\\
+\Psi_{\bm{k}_{12}}(\bm{r}_{23})\Psi_{\bm{k}_{13}}(\bm{r}_{12})\Psi_{\bm{k}_{23}}(\bm{r}_{13})+\\ 
+\Psi_{\bm{k}_{12}}(\bm{r}_{13})\Psi_{\bm{k}_{13}}(\bm{r}_{23})\Psi_{\bm{k}_{23}}(\bm{r}_{12})+\\
+\Psi_{\bm{k}_{12}}(\bm{r}_{12})\Psi_{\bm{k}_{13}}(\bm{r}_{23})\Psi_{\bm{k}_{23}}(\bm{r}_{13})+\\
+\Psi_{\bm{k}_{12}}(\bm{r}_{13})\Psi_{\bm{k}_{13}}(\bm{r}_{12})\Psi_{\bm{k}_{23}}(\bm{r}_{23})+\\
+\Psi_{\bm{k}_{12}}(\bm{r}_{23})\Psi_{\bm{k}_{13}}(\bm{r}_{13})\Psi_{\bm{k}_{23}}(\bm{r}_{12})
+\Bigg]
+\end{aligned}
+\end{equation}
+
+
 
 \subsection{A Coulomb-korrekciós integrál}
+
 \subsubsection{Kétrészecske}
+\Aref{eq:Kn} egyenlet alapján a kétrészecske Coulomb integrál a következő lesz:
+
+\begin{equation}
+K(\bm{p}_1,\bm{p}_2)=
+\frac{
+\iint \mathcal{S}(\bm{p}_1, \bm{r}_1)\mathcal{S}(\bm{p}_2, \bm{r}_2)
+\abs{\Psi^{0}_{\bm{p_1},\bm{p_2}}(\bm{r_1},\bm{r_2})} d^3 \bm{r}_1d^3 \bm{r}_2
+}{\iint \mathcal{S}(\bm{p}_1, \bm{r}_1)\mathcal{S}(\bm{p}_2, \bm{r}_2)
+\abs{\Psi^\mathcal{C}_{\bm{p_1},\bm{p_2}}(\bm{r_1},\bm{r_2}}d^3 \bm{r}_1d^3 \bm{r}_2}
+\label{eq:Kn2}
+\end{equation}
+
+A kétrészecske Coulomb probléma tárgyalásánál láttuk, hogy célszerű áttérni az $\bm{r}=\bm{r_1}-\bm{r_2}$, $2\bm{R}=\bm{r_1}+\bm{r_2}$, $2\bm{k}=\bm{p_1}-\bm{p_2}$ és $\bm{K}=\bm{p_1}+\bm{p_2}$ változókra, ekkor ugyanis mind a szabad, mind a Coulomb hullámfüggvény négyzete $\bm{R}$ és  $\bm{K}$ független lesz:
+\begin{equation}
+\abs{\Psi_{\bm{k},\bm{K}}(\bm{r},\bm{R})}^2 = \abs{e^{i\bm{KR}}\Psi_{\bm{k}}(\bm{r})}^2=\abs{\Psi_{\bm{k}}(\bm{r})}^2,
+\end{equation}
+így $\bm{R}$ függés csak a forrásfüggvényben marad. Ez azt jelenti, hogy ~\aref{eq:Kn2} Coulomb integrál a következő alakra egyszerűsödik:
+\begin{equation}
+K(\bm{k},\bm{K})=
+\frac{
+\int \mathcal{S}_2(\bm{r}, \bm{k}, \bm{K})
+\abs{\Psi^{0}_{\bm{k}}(\bm{r})} d^3 \bm{r}
+}{\int \mathcal{S}_2(\bm{r}, \bm{k}, \bm{K})
+\abs{\Psi^{\mathcal{C}}_{\bm{k}}(\bm{r})} d^3 \bm{r}},
+\label{eq:K2}
+\end{equation}
+ahol a bevezetett $\mathcal{S}_2$ a következőképpen számolható:
+\begin{equation}
+\mathcal{S}_2(\bm{r}, \bm{k},\bm{K}) = \int \mathcal{S}\Big(\bm{k}+\frac{1}{2}\bm{K}, \bm{R}+\frac{1}{2}\bm{r}\Big)\mathcal{S}\Big(\bm{k}-\frac{1}{2}\bm{K}, \bm{R}-\frac{1}{2}\bm{r}\Big)d^3\bm{R}.
+\end{equation}
+Ez az integrál elvégezhető, amennyiben a forrást $\alpha, R_M$ paraméterekkel jellemzett Lévy eloszlásnak tekintjük, a végeredmény a következő lesz:
+\begin{equation}
+\mathcal{S}(\bm{p},\bm{r})=\mathcal{L}(\bm{r},\alpha,R_M)\Longrightarrow \mathcal{S}_2(\bm{r},\bm{k},\bm{K})=\mathcal{L}(\bm{r}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+\end{equation}
 \subsubsection{Háromrészecske}
+\Aref{eq:Kn} egyenlet alapján a kétrészecske Coulomb integrál a következő lesz:
+\begin{equation}
+K(\bm{p}_1,\bm{p}_2,\bm{p}_3)=
+\frac{
+\iiint 
+\mathcal{S}(\bm{p}_1, \bm{r}_1)\mathcal{S}(\bm{p}_2, \bm{r}_2)\mathcal{S}(\bm{p}_3, \bm{r}_3)
+\abs{\Psi^{0}_{\bm{p_1},\bm{p_2}\bm{p_3}}(\bm{r_1},\bm{r_2},\bm{r_2})} d^3 \bm{r}_1d^3 \bm{r}_2d^3 \bm{r}_3
+}{\iiint
+\mathcal{S}(\bm{p}_1, \bm{r}_1)\mathcal{S}(\bm{p}_2, \bm{r}_2)\mathcal{S}(\bm{p}_3, \bm{r}_3)
+\abs{\Psi^\mathcal{C}_{\bm{p_1},\bm{p_2},\bm{p_3}}(\bm{r_1},\bm{r_2},\bm{r_3})}d^3 \bm{r}_1d^3 \bm{r}_2d^3 \bm{r}_3}
+\label{eq:Kn3}
+\end{equation}
+
+Kétrészecske esethez hasonlóan itt is bevezetjük a relatív koordinátákat, azaz a következő változókra tértünk rá:
+\begin{equation}
+\bm{r}_{ij} = \bm{r}_i-\bm{r}_j,\;\;\;\;\;\;\;
+\bm{R}=\frac{\bm{r}_1+\bm{r}_2+\bm{r}_3}{3},\;\;\;\;\;\;\;
+\bm{k}_{ij}=\frac{\bm{p}_{i}-\bm{p}_{j}}{2},\;\;\;\;\;\;\;
+\bm{K} = \frac{\bm{p}_1+\bm{p}_2+\bm{p}_3}{3},
+\label{eq:CMF3}
+\end{equation}
+továbbá teljesül $\bm{r}_{23}=\bm{r}_{13}-\bm{r}_{12}$ és $\bm{k}_{23}=\bm{k}_{13}-\bm{k}_{12}$ összefüggés, így az integrálási mérték: $d^3 \bm{r}_1d^3 \bm{r}_2d^3 \bm{r}_3=d^3\bm{R} d^3\bm{r}_{12} d^3\bm{r}_{13}$ lesz. A hullámfüggvények ebben az esetben is csak a relatív változóktól függenek, $\bm{R}$ függése csak a forrásfüggvényeknek lesz, ezért a $d^3\bm{R}$ integrál ismét a forrásfüggvények szorzatára lesz érvényes. Így a háromrészecske Coulomb integrál a következő alakú lesz:
+
+\begin{equation}
+K(\bm{k}_{12},\bm{k}_{13},\bm{K})=
+\frac{
+\iint
+\mathcal{S}_{3}(\bm{r}_{12}, \bm{r}_{13}, \bm{k}_{12}, \bm{k}_{13}, \bm{K})
+\abs{\Psi^{0}_{\bm{k_{12}},\bm{k_{13}}\bm{k_{23}}}(\bm{r_{12}},\bm{r_{13}},\bm{r_{23}})} d^3 \bm{r}_{12}d^3 \bm{r}_{13}
+}{\iint
+\mathcal{S}_{3}(\bm{r}_{12}, \bm{r}_{13}, \bm{k}_{12}, \bm{k}_{13}, \bm{K})
+\abs{\Psi^{\mathcal{C}}_{\bm{k_{12}},\bm{k_{13}}\bm{k_{23}}}(\bm{r_{12}},\bm{r_{13}},\bm{r_{23}})} d^3 \bm{r}_{12}d^3 \bm{r}_{13}},
+\label{eq:K3}
+\end{equation}
+
+ahol a bevezetett $\mathcal{S}_3$ a következőképpen néz ki (momentum függést nem írtam ki):
+\begin{equation}
+\mathcal{S}_{3}(\bm{r}_{12}, \bm{r}_{13}) =
+\int 
+\mathcal{S}\bigg(\bm{R}+\frac{5}{3}\bm{r}_{12}+\frac{1}{3}\bm{r}_{13}\bigg)
+\mathcal{S}\bigg(\bm{R}+\frac{2}{3}\bm{r}_{12}+\frac{1}{3}\bm{r}_{13}\bigg)
+\mathcal{S}\bigg(\bm{R}-\frac{7}{2}\bm{r}_{12}-\frac{2}{3}\bm{r}_{13}\bigg)
+d^3\bm{R}
+\end{equation}
+
+A forrásfüggvényre $\alpha,\;R_M$ paraméterekkel rendelkező Lévy eloszlást feltételezve, az összefüggésbe ~\aref{eq:Levyint} definíciót beírva, az $\bm{R}$-re vett integrál elvégezhető, eredményül egy Dirac-deltát ad, így egy további $\bm{q}$-ra vett integrál is elvégezhető, végül a következő alakra egyszerűsödik: 
+\begin{equation}
+\mathcal{S}_3(\bm{r}_{12}, \bm{r}_{13}) = \frac{1}{(2\pi)^6}
+\int
+e^{-\abs{\bm{q}_1R_M}^\alpha-\abs{\bm{q}_2R_M}^\alpha-\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha}
+e^{-i\bm{q}_1(4\bm{r}_{12}+\bm{r}_{13})}
+e^{i\bm{q}_2(3\bm{r}_{12}+\bm{r}_{13})}
+d^3\bm{q}_1d^3\bm{q}_2
+\end{equation}
+Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{q}_1R_M}^\alpha+\abs{\bm{q}_2R_M}^\alpha$, akkor az $\mathcal{S}_3$ a következő lenne:
+\begin{equation}
+\mathcal{S}_3(\bm{r}_{12}, \bm{r}_{13})=\mathcal{L}(4\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+\mathcal{L}(3\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+\end{equation}
+
 \subsection{Adaptív Gauss–Kronrod módszer}\label{sec:GK}
 
 \subsection{Markov chain Monte Carlo módszerek}
@@ -564,17 +704,21 @@ Markov tulajdonság, grafikus model, faktorizál
 \subsubsection{CUDA}\label{sec:CUDA}
 \subsubsection{MapReduce}\label{sec:MapReduce}
 \subsubsection{Háromrészecske Coulomb integrál közelítése}
+
+\subsubsection{Eredmények}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a185.pdf}
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a198.pdf}
 \end{figure}
-
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a19.pdf}
+\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a19_v2.pdf}
 \end{figure}
-
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a145.pdf}
+\end{figure}
 
 \section{Adatanalízis}
 \subsection{Korrelációs függvény változói}
@@ -583,9 +727,33 @@ Markov tulajdonság, grafikus model, faktorizál
 
 \section{Eredmények}
 \subsection{Illesztés vizualizáció}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pic/res/diag_lowpt.pdf}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pic/res/diag_highpt.pdf}
+\end{figure}
 \subsection{Háromrészecske korrelációs erősség}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{pic/res/lambda3.pdf}
+\end{figure}
 \subsection{Parciális koherencia}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{pic/res/kappa3.pdf}
+\end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pic/res/fcpc1.pdf}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pic/res/fcpc2.pdf}
+\end{figure}
 
 \section{Összefoglaló}
 
