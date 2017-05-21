@@ -17,6 +17,10 @@
 \bibliographystyle{plain}
 \usepackage{hyperref}
 \usepackage{environ}
+\selectlanguage{magyar}
+\usepackage[hungarian]{algorithm2e}
+
+
 
 
 \newtheorem{definition}{Definíció}[section]
@@ -755,7 +759,7 @@ Amennyiben $g(x)=1$, egyenletes eloszlással mintavételezhettük és az integr�
 
 \subsubsection{Markov-láncok}
 
-A Monte-Carlo integrálás során lényeges lépés bizonyos eloszlással létrehozni egy mintát. Ennek a megvalósítása az úgynevezett Markov-láncok (\cite{norris1998markov}) segítségével történhet. 
+A Monte-Carlo integrálás során lényeges lépés bizonyos eloszlással létrehozni egy mintát. Ennek a megvalósítása az úgynevezett diszkrét Markov-láncok (\cite{norris1998markov}) segítségével történhet. 
 
 \begin{definition}
 Az $X_1,\dots,X_N$ ($\Omega$ értékű) valószínűségi változók sorozatát Markov-láncnak nevezzük, ha $\forall n$ és $\forall x_1,\dots,x_{n+1}\in\Omega$ esetén teljesül az úgynevezett Markov tulajdonság:
@@ -773,7 +777,7 @@ Az $X_1,\dots,X_N$ Markov-láncot homogénnek nevezünk, akkor ha $\forall i,\;\
 \end{definition}
 
 \begin{definition}
-Az $X_1,\dots,X_N$ Markov-lánc irreducibilis, ha $\forall a,b\in\Omega$: $\exists i\geq 0$ úgy, hogy $\mathcal{P}(X_i=a|X_{0}=b)>0$.
+Az $X_1,\dots,X_N$ Markov-lánc irreducibilis, ha $\forall a,b\in\Omega$: $\exists i\geq 0$ úgy, hogy $\mathcal{P}(X_i=a|X_{0}=b)>0$ (bármely állapotból bármely állapotba el lehet jutni).
 \end{definition}
 
 \begin{definition}
@@ -812,8 +816,48 @@ azaz nem számít a lánc kezdőpontja. A tétel feltételeit teljesítő folyam
 \end{theorem}
 
 
-\subsubsection{Metropolis algoritmus}
-Markov tulajdonság, grafikus model, faktorizál
+\subsubsection{Metropolis-Hastings algoritmus}
+
+Az ergodicitás tétele alapján, ha tudunk konstruálni egy $p$ stacionárius eloszlással rendelkező homogén, irreducibilis Markov-láncot, akkor Markov láncon számolt időátlag (nagy időkre) majdnem biztosan konvergál az $\langle f \rangle_p=\int_\Omega fp$ várható értékhez.
+
+A Metropolis-Hastings egy olyan algoritmus, amely adott $p$ eloszláshoz tud ergodikus Markov-láncot generálni \cite{Metropolis}. Az algoritmus alkalmazása során először egy javasló függvényt kell megkonstruálni, ezt $Q(x_i|x)$ jelölöm, amely javaslatot add, az $x_i$ pontban levő Markov-lánc következő elemére (adott $x_i$ esetén a lánc következő elemére a javasolt $x$ értéket $Q(x_i|x)$ valószínűséggel választjuk). Ezután a javasolt értéket ~\aref{eq:MHalpha} vagy elfogadjuk, vagy eldobjuk, ekkor a következő elem az aktuális elem lesz. Az algoritmus vázlata vázlata  a következő:
+
+\begin{center}
+\begin{algorithm}[H]
+Legyen $x_0\in \Omega$\;
+ \While{$i=1,\dots,N$}{
+ Válasszunk $x$ elemet $Q(x_{i-1}|x)$ eloszlás szerint\;
+ Elfogadási valószínűség:
+ \begin{equation}
+ \alpha = \min{\Bigg\{1, \frac{Q(x_{i-1}|x)p(x)}{p(x_{i-1})Q(x|x_{i-1})}\Bigg\}}
+ \label{eq:MHalpha}
+ \end{equation}
+  \eIf{Egyenletes($0,1$)<$\alpha$}{
+   $x_i=x$\;
+   }{
+   $x_i=x_{i-1}$
+  }
+ }
+ \caption{A Metropolis-Hastings algoritmus.}
+ \label{alg:MH}
+\end{algorithm}
+\end{center}
+
+Amennyiben a javasló függvény szimmetrikus, az algoritmus egyszerűsödik és ~\aref{eq:MHalpha} elfogadási valószínűségből kiesik a $Q$. Ezt az egyszerűbb algoritmust nevezik Metropolis algoritmusnak. A munkám során én a következő szimmetrikus ajánló függvényt választottam:
+\begin{equation}
+Q(x_i|x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-x_i)^2}{2\sigma^2}},
+\end{equation}
+tehát $x_i$ pontban levő Markov-lánc következő elemére egy $x_i$ körüli normális eloszlásból húztam javaslatot.
+
+\Aref{fig:MCMC} ábra szemlélteti a Metropolis algoritmus alkalmazását. Először az algoritmus segítségével a Lévy eloszlás karakterisztikus függvénye szerint generáltam egy mintát ($\alpha=1.4,\;R=0.5$), az ábrán látható, hogy a kapott minta szépen követi a céleloszlást. A második ábra mutatja egy függvényre a Metropolis algoritmus által generált minta segítségével számolt Monte Carlo integrálás eredményét különböző mintaméret esetén. Az ábrán körülbelül látható, hogy a minta nagyságának a gyökével csökken a hibája az MCMC integrálásnak.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{pic/Coulomb/MCSamples.pdf}
+\includegraphics[scale=0.33]{pic/Coulomb/MCMCInt.pdf}
+\caption{A baloldali ábra mutatja a $p(x)\propto e^{-\abs{0.5x}^{1.4}}$ eloszlással Metropolis algoritmus által generált mintát és céleloszlást. A jobboldali ábra mutatja az Markov-lánc Monte Carlo integrál eredményét a minta nagyságának függvényébe. }
+\label{fig:MCMC}
+\end{figure}
 
 \subsection{Implementáció}
 \subsubsection{CUDA}\label{sec:CUDA}
@@ -828,11 +872,11 @@ Markov tulajdonság, grafikus model, faktorizál
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a19_v2.pdf}
+\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a19_S2correct.pdf}
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a145.pdf}
+\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a14_S2correct.pdf}
 \end{figure}
 
 \section{Adatanalízis}
