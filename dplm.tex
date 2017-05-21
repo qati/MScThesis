@@ -717,7 +717,7 @@ A Gauss-Kronrod módszer a Gauss módszert egészíti ki, úgy, hogy az $n$-ed r
 
 \subsection{Markov-lánc Monte Carlo módszerek}
 
-A Coulomb integrál számítására a Markov-lánc Monte Carlo módszert választottuk, mivel ezen módszer segítségével hatékonyabban tudjuk számolni a magasdimenziós integrálokat.
+A Coulomb integrál számítására a Markov-lánc Monte Carlo módszert (\cite{mcbook}) választottuk, mivel ezen módszer segítségével hatékonyabban tudjuk számolni a magas dimenziós integrálokat.
 
 \subsubsection{Monte Carlo módszer}
 
@@ -737,7 +737,7 @@ A $p(x)$ valószínűségi eloszlás szerint válasszunk N pontot a terünkből,
 \label{eq:IN}
 \end{equation} 
 
-A nagy számok erős törvénye alapján a minta várható érték majdnem biztosan tart a várható értékhez:
+Mivel az $x_i$-k azonos eloszlású valószínűségi változók, az $f(x_i)$ is azonos eloszlású valószínűségi változó lesz, jelöljük ezt $y_i$-vel. Az új változóban $I/C$ az $y$ várható értéke, $I_N/C$ a várható érték becslése egy $N$ elemű minta alapján. Amennyiben teljesül, hogy $\langle y^4\rangle<\infty$ (vagy $\langle \abs{y}\rangle<\infty$), akkor érvényes lesz a nagy számok erős törvénye, amely alapján a minta várható érték majdnem biztosan tart a várható értékhez:
 \begin{equation}
 \mathcal{P}\Big(\lim_{N\rightarrow\infty}\bar{I}_N=I\Big)=1,
 \end{equation}
@@ -753,19 +753,24 @@ Tehát a hiba a pontok számának a gyökével csökken.
 
 Amennyiben $g(x)=1$, egyenletes eloszlással mintavételezhettük és az integrál értéke $I=V\bar{f}$ lesz, ahol $V=\int_\Omega dx$.
 
-\subsubsection{Markov-lánc}
+\subsubsection{Markov-láncok}
+
+A Monte-Carlo integrálás során lényeges lépés bizonyos eloszlással létrehozni egy mintát. Ennek a megvalósítása az úgynevezett Markov-láncok (\cite{norris1998markov}) segítségével történhet. 
 
 \begin{definition}
-Az $X_1,\dots,X_N$ ($\Omega$ értékű) valószínűségi változók sorozatát Markov-láncnak nevezzük, ha minden $n$ és $x_1,\dots,x_{n+1}\in\Omega$ esetén teljesül az úgynevezett Markov tulajdonság:
+Az $X_1,\dots,X_N$ ($\Omega$ értékű) valószínűségi változók sorozatát Markov-láncnak nevezzük, ha $\forall n$ és $\forall x_1,\dots,x_{n+1}\in\Omega$ esetén teljesül az úgynevezett Markov tulajdonság:
 \begin{equation}
 \mathcal{P}(X_{n+1}=x_{n+1}|X_n=x_n,\dots,X_1=x_n)=\mathcal{P}(X_{n+1}=x_{n+1}|X_n=x_n)
 \end{equation}
 \end{definition}
 
-\begin{definition}
-Az $X_1,\dots,X_N$ Markov-láncot homogénnek nevezünk, akkor ha $\forall i,\;\forall a,b\in\Omega: \mathcal{P}(X_{i+1}=a|X_{i}=b)=T_{ab}$. A $T$ mátrixot szokás sztochasztikus mátrixnak nevezni ($\sum_{b\in Omega}T_{ab}=1$).
-\end{definition}
+Tehát egy Markov-lánc egy olyan sztochasztikus folyamat, amelynek nincs memóriája, azaz egy adott időpillanatbeli valószínűség csupán az $1$ lépéssel előtti értéktől függ. 
 
+Markov-láncokra a nagy számok erős törvényéhez hasonló, de annál erősebb, tételt mondhatunk ki, amely lehetővé teszi az ilyen folyamatok alkalmazását a Monte Carlo módszereknél. A tétel megfogalmazása előtt, definiálni kell néhány fontos fogalmat a Markov-folyamatokra.
+
+\begin{definition}
+Az $X_1,\dots,X_N$ Markov-láncot homogénnek nevezünk, akkor ha $\forall i,\;\forall a,b\in\Omega: \mathcal{P}(X_{i+1}=a|X_{i}=b)=T_{ab}$. A $T$ mátrixot sztochasztikus mátrixnak szokás nevezni, és $b$-ből az $a$ állapotba való jutás valószínűségét mondja meg  ($\sum_{b\in\Omega}T_{ab}=1$).
+\end{definition}
 
 \begin{definition}
 Az $X_1,\dots,X_N$ Markov-lánc irreducibilis, ha $\forall a,b\in\Omega$: $\exists i\geq 0$ úgy, hogy $\mathcal{P}(X_i=a|X_{0}=b)>0$.
@@ -784,22 +789,26 @@ Egy $X_1,\dots,X_N$ Markov-lánc aperiodikus, ha $\forall a\in\Omega$: $k(a)=1$
 \end{definition}
 
 \begin{definition}
-Egy $\Omega$-n értelmezett $p$ eloszlás stacionárius, ha
+Egy $\Omega$-n értelmezett $p$ eloszlás stacionáriusnak nevezünk, ha
 \begin{equation}
 \sum_{a\in\Omega}p_aT_{ab}=p_b,\;\;\;\;\forall b\in\Omega
 \end{equation}
+A Markov-folyamatot stacionáriusnak nevezzük, ha $\exists\;p$, azaz az $X_n$ eloszlása időtől független.
 \end{definition}
 
-\begin{theorem}{Ergodicitás tétel Markov láncokra.}
-Legyen $X_1,\dots$ egy irreducibilis, homogén Markov-lánc és az $X_i$-k $p$ eloszlása stacionárius, ekkor
+Ezen definíciók felhasználásával már kimondható az Ergodicitás tétel Markov-folyamatokra, amelynek első része  analóg a nagy számok erős törvényével (azonban erősebb annál, hiszen elég ha a függvény integrálja konvergens, nem kell abszolút konvergensnek lennie). A második része fontos állítást tesz a Markov-lánc kezdőpontjának megválasztásával kapcsolatban.
+
+\begin{theorem}{Ergodicitás tétel.}
+Legyen $X_1,\dots$ egy irreducibilis, homogén Markov-lánc, melynek stacionárius eloszlása  $p$, ekkor  
+$\forall f:\Omega\rightarrow\Sigma ,\;\norm{\langle f\rangle}<\infty$
 \begin{equation}
-\mathcal{P}\Bigg(\lim_{N\rightarrow\infty}\frac{1}{N}\sum_{i=1}^Nf(X_i)-\langle f \rangle_p\Bigg)=1
+\mathcal{P}\Bigg(\lim_{N\rightarrow\infty}\frac{1}{N}\sum_{i=1}^Nf(X_i)=\langle f \rangle_p\Bigg)=1
 \end{equation}
 Amennyiben a lánc még aperiodikus is, akkor $\forall a,b\in\Omega$ esetén teljesül: 
 \begin{equation}
 \lim_{n\rightarrow\infty}\mathcal{P}(X_n=a|X_0=b) = p(a),
 \end{equation}
-azaz nem számít a lánc kezdőpontja.
+azaz nem számít a lánc kezdőpontja. A tétel feltételeit teljesítő folyamatokat szokás ergodikus Markov-láncnak nevezni.
 \end{theorem}
 
 
