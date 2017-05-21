@@ -840,6 +840,7 @@ Legyen $x_0\in \Omega$\;
  }
  \caption{A Metropolis-Hastings algoritmus.}
  \label{alg:MH}
+ \KwOut{$x_1,x_2,\dots,x_N$ minta ($p$ eloszlást követ)}
 \end{algorithm}
 \end{center}
 
@@ -860,9 +861,26 @@ tehát $x_i$ pontban levő Markov-lánc következő elemére egy $x_i$ körüli 
 \end{figure}
 
 \subsection{Implementáció}
+
+A Coulomb integrál számolását két lépésben végeztem: először kiszámoltam ~\aref{eq:Levyint} összefüggés által definiált Lévy integrált sok paraméterre, majd második lépésben ezen eredményt felhasználva számoltam a Coulomb integrált.
+
+
+
 \subsubsection{CUDA}\label{sec:CUDA}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.32]{pic/prog/cudamodel}
+\includegraphics[scale=0.8]{pic/prog/cudascale}
+\end{figure}
+
 \subsubsection{MapReduce}\label{sec:MapReduce}
-\subsubsection{Háromrészecske Coulomb integrál közelítése}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{pic/prog/MapReduce}
+\end{figure}
+
+
 
 \subsubsection{Eredmények}
 \begin{figure}[H]
@@ -880,9 +898,14 @@ tehát $x_i$ pontban levő Markov-lánc következő elemére egy $x_i$ körüli 
 \end{figure}
 
 \section{Adatanalízis}
+\subsection{Adatok}
+\subsubsection{Egyrészecske vágások}
+\subsubsection{Kétrészecske vágások}
 \subsection{Korrelációs függvény változói}
 \subsection{Korrelációs függvény mérése}
+\subsection{Szisztematikus hibák}
 \subsection{Illesztett modell}
+
 
 \section{Eredmények}
 \subsection{Illesztés vizualizáció}
