@@ -354,11 +354,13 @@ Mivel Lévy eloszlást használunk a forrás modellezésére, ezért a Lévy par
 A Lévy eloszlás skálaparamétertől való függésére ($R$ paraméter) teljesül a következő összefüggés:
 \begin{equation}
 \mathcal{L}(\bm{r}, \alpha, R) = \mathcal{L}\bigg(\frac{\bm{r}}{R}, \alpha, 1\bigg)R^{-3}\equiv \mathcal{L}\bigg(\frac{\bm{r}}{R}, \alpha\bigg)R^{-3}
+\label{eq:LevyintR}
 \end{equation}
 
 Továbbá az eloszlás nem függ az $\bm{r}$ irányától, csak a nagyságától (belátható változócsere segítségével $\bm{q'}=\bm{Aq}$: $\abs{\bm{q}}=\abs{\bm{q'}}\bm{qr}=\abs{\bm{q}}\abs{\bm{r}}$, ekkor $d^3 q=d^3 q'$):
 \begin{equation}
 \mathcal{L}(\bm{r}, \alpha, R)=\mathcal{L}(\abs{\bm{r}}, \alpha, R)
+\label{eq:LevyintO}
 \end{equation}
 
 Az egydimenziós Lévy eloszlás aszimptotikus viselkedéséből  ~\cite{LevyEff} kiindulva könnyedén meghatározható a háromdimenziós eloszlás viselkedése is. Nagy $r$ paraméter esetén, a Lévy eloszlás a következő sor segítségével kapható meg ($r>>1$):
@@ -416,6 +418,7 @@ C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}({k},{K})}^2}{\abs{\tilde{\mathcal
 1+\frac{\abs{\tilde{\mathcal{S}}_M({k},{K})}^2}{\Big(N_M+N_G\Big)^2}
  =
   1+\lambda_2\frac{\abs{\tilde{\mathcal{S}}_M({k},{K})}^2}{\abs{\tilde{\mathcal{S}}_M(0,{K})}^2},
+ \label{eq:CHC2}
 \end{equation}
 ahol bevezettem a:
 \begin{equation}
@@ -552,6 +555,7 @@ A hullámfüggvény egyre normáltságát megkövetelve az $\mathcal{N}$ normál
 érték adódik. A gamma függvényre vonatkozó $\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)}$, valamint $\Gamma(1+i\eta)^{*}=\Gamma(1-i\eta)$ azonosságok felhasználásával, a normálási tényező négyzetére a következő adódik:
 \begin{equation}
 \abs{\mathcal{N}}^2=\frac{2\pi\eta}{e^{2\pi\eta}-1},
+\label{eq:Gamow}
 \end{equation}
 amely az úgynevezett Gamow-faktor.
 \subsubsection{Háromrészecske}
@@ -680,7 +684,7 @@ ahol a bevezetett $\mathcal{S}_3$ a következőképpen néz ki (momentum függé
 \int 
 \mathcal{S}\bigg(\bm{R}+\frac{5}{3}\bm{r}_{12}+\frac{1}{3}\bm{r}_{13}\bigg)
 \mathcal{S}\bigg(\bm{R}+\frac{2}{3}\bm{r}_{12}+\frac{1}{3}\bm{r}_{13}\bigg)
-\mathcal{S}\bigg(\bm{R}-\frac{7}{2}\bm{r}_{12}-\frac{2}{3}\bm{r}_{13}\bigg)
+\mathcal{S}\bigg(\bm{R}-\frac{7}{3}\bm{r}_{12}-\frac{2}{3}\bm{r}_{13}\bigg)
 d^3\bm{R}
 \end{equation}
 
@@ -692,11 +696,7 @@ e^{-\abs{\bm{q}_1R_M}^\alpha-\abs{\bm{q}_2R_M}^\alpha-\abs{\bm{q}_1R_M+\bm{q}_2R
 e^{-i\bm{q}_1(4\bm{r}_{12}+\bm{r}_{13})}
 e^{i\bm{q}_2(3\bm{r}_{12}+\bm{r}_{13})}
 d^3\bm{q}_1d^3\bm{q}_2
-\end{equation}
-Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{q}_1R_M}^\alpha+\abs{\bm{q}_2R_M}^\alpha$, akkor az $\mathcal{S}_3$ a következő lenne:
-\begin{equation}
-\mathcal{S}_3(\bm{r}_{12}, \bm{r}_{13})=\mathcal{L}(4\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
-\mathcal{L}(3\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+\label{eq:S3}
 \end{equation}
 
 
@@ -862,40 +862,100 @@ tehát $x_i$ pontban levő Markov-lánc következő elemére egy $x_i$ körüli 
 
 \subsection{Implementáció}
 
-A Coulomb integrál számolását két lépésben végeztem: először kiszámoltam ~\aref{eq:Levyint} összefüggés által definiált Lévy integrált sok paraméterre, majd második lépésben ezen eredményt felhasználva számoltam a Coulomb integrált.
+A Coulomb integrál számolását két lépésben végeztem: először kiszámoltam ~\aref{eq:Levyint} összefüggés által definiált Lévy integrált sok különböző paraméter esetén, majd második lépésben ezen eredményt felhasználva számoltam a Coulomb integrált.
 
+A Lévy integrál számolásához ~\aref{sec:GK} fejezetben bemutatott 15-öd rendű Gauss-Kronrod módszert használtam. Próbálkoztam Markov-lánc Monte Carlo módszerrel is számolni ezen integrált, de a Gauss-Kronrod sokkal hatékonyabb és pontosabb eredményt adott. ~\Aref{eq:LevyintR} összefüggés alapján elegendő a számolást $R=1$ esetén elvégezni, az eredményből aztán bármely másik $R$ paraméter esetén meghatározható az integrál értéke. ~\Aref{eq:LevyintO} összefüggés alapján az integrál értéke csupán az $\bm{r}$ vektor hosszától függ, az iránytól nem, ezért választhatjuk a $\bm{r}=(0,0,r)$ vektort a számolás során, így a z integrál a következő alakra egyszerűsödik:
 
+\begin{equation}
+\mathcal{L}(r, \alpha, R) = \frac{1}{2\pi^2}\int_0^\infty \frac{q\sin{qr}}{r}e^{-|qR|^\alpha}dq
+\end{equation}
 
+Az integrálás során a lépésközt (azaz a $dq$-t) adaptívan határoztam meg, úgy, hogy a hibát a 7 pontú Gauss szabály és a 15 pontú pontosabb becslés különbségével közelítettem. Az integrálást mind CPU párhuzamos, mind GPU párhuzamos verzióban implementáltam. A saját implementáció mögötti motiváció abból az egyszerű tényből ered, hogy mivel rengeteg sok pontban kell kiszámolnom az integrált ($10^6$ nagyságrendű különböző paraméter esetén), saját implementációval nagyon erősen ki tudom használni a sokmagos architektúrák nyújtotta előnyöket. Továbbá azért döntöttem a grafikus processzorra (GPU) való implementálás mellett is, mert a GPU sokkal nagyobb része van számításra tervezve mint a CPU-é (több tranzisztor vesz részt a számolásban), sokkal több maggal rendelkezik (tipikusan egy modern CPU 4-6, míg egy GPU több ezer maggal), amelyek kihasználhatók a sok integrálás párhuzamos végzése során. Az általános tapasztalatom, az, hogy a GPU bevonása a számolásba költséges, használata csupán a masszívan párhuzamosítható problémák esetén érdemes (konkrétan 128 darab integrál elvégzésig a laptopomban levő 4 magos Intel i7 processzor gyorsabb volt, mint az Nvidia Geforce 960m videokártyán történő számolás, azonban 128 fölött a GPU már győzelmet aratott).
+
+A CPU párhuzamos változat implementálását C++ nyelven végeztem, a legújabb, 2014-es nyelvi standardot követve, amely tartalmazza a CPU-ra történő párhuzamosításhoz szükséges eszközöket. A GPU általános számítás célú programozására több lehetőség van. Nvidia kártyák esetén a leghatékonyabb választás az Nvidia saját fejlesztésű CUDA platformja. De használható erre a célra a más gyártók eszközeit is támogató OpenCL is, viszont általában hosszú és átláthatatlan kódot eredményez. Azonban napjainkban a mesterséges intelligencia térhódításának köszönhetően, kiemelkedő szerephez jutottak a nagy teljesítményű, GPU-t kihasználni tudó könyvtárak. A legbiztatóbb jövőt mutató könyvtár a SYCL, amelynek a szabványát a Khronos csoport definiálta, és ipari szintű implementációja jelenleg béta státuszban van. Ezen könyvtár egy modern C++ absztrakciós réteg az OpenCL-hez, így több gyártó eszközén használható a számítások gyorsításra, miközben az OpenCL hátrányait kiküszöbölve, elegáns kódot eredményez. Mivel én Nvidia GPU-val rendelkezek, ezért a GPU párhuzamosításra CUDA könyvtárat választottam. Következő alfejezetben ezen könyvtár működését mutatom be röviden. 
+
+ 
 \subsubsection{CUDA}\label{sec:CUDA}
+A GPU elsősorban grafikus alkalmazások számára van kifejlesztve. Ezen alkalmazások közös jellemzője, hogy nagyon nagy számítási igényűek és masszívan párhuzamosíthatók. A grafikus processzorokat ennek szellemében fejlesztik. Ennek eredményeként sokkal több tranzisztort dedikálnak számoláshoz, mint a CPU. Az Nvidia ismerte fel először, hogy hardverükben nagy lehetőségek rejlenek a számítás-intenzív, nem grafikus programok számára is, amelyek a tudományos világban folyton felbukkannak. Ezért alkották meg a CUDA platformot, amely egy olyan kiegészítést ad elsősorban C, C++ nyelvekhez, amely segítségével a grafikus processzor általános célú számításra használható. 
+
+CUDA felhasználásával hibrid kódot fejleszthetünk, melyet az Nvidia saját, nvcc névre keresztelt fordítójával tudunk lefordítani. Ezen kódokat azért szokás hibridnek nevezni, mert mind a GPU mind a CPU kódot egy helyen tartalmazzák. A GPU önmagában csak nagyon egyszerű feladatokat tud ellátni (pl. kiszámolni sok integrált), működését a CPU vezérli, ezért a CUDA kódban, a számítások végzésére úgynevezett kerneleket írunk (kb. egy függvény), standard C++ nyelven (STL könyvtár nem használható), amelyeket aztán a CPU-n futó kód tud indítani. A grafikus processzorok saját memóriával rendelkeznek, és a kernelek ezen tudnak operálni. Ez azt jelenti, hogy egy CUDA programban a következő szisztéma szerint kell kódot fejleszteni (ezt szemlélteti ~\aref{fig:cuda} bal oldali ábrája):  
+\begin{itemize}
+\item Előkészítjük az adatokat, melyeket a CPU-hoz tartozó memóriába tárolunk.
+\item Lefoglaljuk a GPU memóriájában a váltózóinknak a helyet a cudaMalloc függvény segítségével. A foglalás után a CPU-n futó programrész printerekkel rendelkezik a lefoglalt helyekre.
+\item Az adatokat amelyek szükségesek a GPU-n végzett számításhoz, átmásoljuk a GPU memóriájában lefoglalt helyekre. A másolást a CPU végzi, a cudaMemcpy függvény hívásának következtében.
+\item A GPU-ra szánt függvényt (azaz kernelt) meghívjuk, hívás közben megadjuk hogy hány példányban szeretnénk elindítani párhuzamosan és átadjuk a GPU memóriájába lefoglalt helyekre mutató változókat. A kernelek indítása nagyon hasonló a megszokott függvényhíváshoz, csupán annyi az eltérés, hogy függvény neve után \(<\!\!<\!\!<\)\dots\(>\!\!>\!\!>\) alakban specifikálni kell az indítási információkat (hány példányba fusson párhuzamosan). A számolás eredményét a kernelek szintén a GPU memóriájába tudják írják.
+\item A számolás eredményét átmásoljuk a GPU memóriájából a CPU memóriájába.
+\end{itemize}  
+
+A kernel indításánál \(<\!\!<\!\!<\) és \(>\!\!>\!\!>\) szimbólumok közé kell írni a kernel indításának leírását. A leíráshoz két paramétert kell megadni: blokkok száma és szálak száma blokkonként. Ez mutatja, hogy a CUDA programozási modellje, a párhuzamosan futó szálakat blokkokba csoportosítja. Az Nvidia kártyákban a magok szintén hardveresen blokkokba vannak csoportosítva, ezeket streaming multiprocessornak (SM) nevezik, és a magok mellett tartalmaznak vezérlő áramköröket. Egy blokk egy SM-en fog futni, tetszőleges sorrendben, azaz nem biztos hogy párhuzamosan, hiszen a blokkok száma nincs korlátozva. Amennyiben több blokkot adunk meg mint amennyi SM van a grafikus processzorunkban, akkor hardveresen meg van oldva, hogy ezek egymás után szét legyenek osztva, úgy, hogy mindig kihasználja az adott hardver képességét. Ez gyakorlatilag azt jelenti, hogy a GPU-ra írt kód úgymond erősen skálázik. Tehát megírunk egy kódot, aztán a grafikus processzor belsőleg úgy fogja szétosztani a számolást, hogy mindig teljesen ki legyen használva a hardver. Ezt hivatott szemléltetni ~\aref{fig:cuda} jobb oldali ábra: 8 blokk egy 2 SM-el rendelkező hardver esetén 4-4 blokk csoportra lesz szétosztva, és ezeket egymás után a hardver küldi az SM-eknek, 4 SM-el rendelkező hardver esetén pedig 2-es csoportokba osztja a blokkokat. Ezen működés pedig a GPU architektúrájába van építve. A blokkok számával ellentétbe a szálak száma korlátozott, az újabb eszközökén maximálisan 1024 szál indítható blokkonként. Minden blokkhoz és minden szálhoz tartozik egy egyedi azonosító, egy ID (akárcsak egy ciklus esetén a futó index), ezen azonosítókat minden futó kernel ismeri.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.32]{pic/prog/cudamodel}
 \includegraphics[scale=0.8]{pic/prog/cudascale}
+\caption{Baloldali kép: a CUDA program általános felépítését láthatjuk. Jobb oldali kép: CUDA-ban írt programok skálázását mutatja be. (Forrás: internet) }
+\label{fig:cuda}
 \end{figure}
 
-\subsubsection{MapReduce}\label{sec:MapReduce}
+\subsubsection{MapReduce programozási modell}\label{sec:MapReduce}
+
+A MapReduce egy általánosan használt, egyszerű programozási modell, amelyet párhuzamos adatfeldolgozásra lehet használni. A modell két fő részből épül fel: map és reduce, amely két magasabb rendű függvény (azaz olyan függvények amelynek paraméteri lehetnek függvények). A map függvény mint a neve sugallja egy leképzést végez, alkalmazza az adatokra a kapott függvényt (érezhető módon ez triviálisan párhuzamosítható). A reduce pedig a kapott adatokat a kapott függvény szerint összefűzi (összegzi). Ezen két roppantul hasznos függvénynek sok hasznos implementációja van. Például a map-nek python nyelven az ipyparallel könyvtárban található a klaszter-párhuzamos implementációja, amely a leképzést egy egész klaszteren végzi. 
+
+A Coulomb integrálok számolásánál ezen modell szerint jártam el. Első lépésben az integrál fejlesztettem egy az integrálokat számoló C++ könyvtárat, amelyből egy python csomagot készítettem. Ezután az ipyparallel csomag felhasználásával python nyelven ezen csomagot a MapReduce modell keretében a Brookhaven nemzeti laboratórium egyik klaszterén szétosztva használtam. Azaz először az integrálási paramétereket csoportosítottam kis csomagokba, úgy, hogy annyi csomagot állítsak elő amennyi számítógép áll rendelkezésemre(tipikusan 200-300 gépet használtam), aztán a klaszter-párhuzamos map segítségével elvégeztem az integrálást (egy csomag esetén a leképzés: csomag minden elemére Coulomb integrál kiszámolása). Végül a kapott eredményt reduce függvény segítségével összefűztem, így előállt eredmény egyszerűbb struktúrába került. A programozási modellt ~\aref{fig:mapreduce} ábra szemlélteti.
+
+A MapReduce programozási modell nem csak az integrálás során jött elő, hanem az adatanalízis során is. Ugyanis itt a rendelkezésre álló adatokat szétosztva sok gépre párhuzamosítva meghatároztam a korrelációs függvényt (map), aztán a sok különböző eredményt összefűztem (reduce).
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{pic/prog/MapReduce}
+\caption{Az ábra a MapReduce programozási modellt mutatja be. A fejgép kisebb csomagokra osztja az adatokat, majd a klaszter számítógépein (munkások) elindít egy párhuzamos leképzést egy adott függvénnyel az adatokon (map). Végül a kapott eredményeket a fejgép összefűzi (reduce) és így előáll a végeredmény. }
+\label{fig:mapreduce}
 \end{figure}
 
 
 
-\subsubsection{Eredmények}
+\subsection{Eredmények}
+
+\subsubsection{Teszt: Coulomb kölcsönhatás nélküli eset}
+
+A számolás elvégzésére írt kódot modulárisan fejlesztettem, minden modult külön teszteltem. Minden elvégzett teszt bemutatása hosszadalmas lenne, ezért itt egy tesztet mutatok be, amely egy modul kivételével az össze modul megbízhatóságát mutatja (az egy kieső modul a komplex hipergeometrikus függvényt számoló kód, ezt a python mpmath könyvtár segítségével teszteltem). Amennyiben ~\aref{eq:K2} kétrészecske integrál nevezőjét tekintjük, felismerhetjük a korrelációs függvény definícióját, Coulomb kölcsönhatás nélküli esetben. Ez Lévy eloszlást feltételezve forrásfüggvénynek, ~\aref{eq:CHC2} összefüggés alapján a Lévy karakterisztikus függvénye lesz. Az eredményt ~\aref{fig:CRT} ábra szemlélteti. Látható, hogy a numerikus eredmény kellően pontosan reprodukálja az analitikusat.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a185.pdf}
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a198.pdf}
+\caption{Coulomb kölcsönhatás nélküli kétrészecske korreláció számolása numerikusan és analitikusan, a kód tesztelése céljából.}
+\label{fig:CRT}
 \end{figure}
+
+\subsubsection{Kétrészecske Coulomb korrekció}
+
+A kétrészecske Coulomb integrál relatív impulzus különbség felétől való függését különböző $R$ Lévy paraméter esetén ~\aref{fig:CRK2dR} ábra szemlélteti. Hasonlóan az $\alpha$ Lévy paramétertől való függést \aref{fig:CRK2dalpha} ábra mutatja.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a19_S2correct.pdf}
+\caption{Kétrészecske Coulomb korrekció a Lévy eloszlás $R$ paraméterének függvényében. A szaggatott vonal mutatja ~\aref{eq:Gamow} egyenlet által definiált Gamow faktort.}
+\label{fig:CRK2dR}
 \end{figure}
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{pic/Coulomb/C2_dR_a14_S2correct.pdf}
+\includegraphics[scale=0.45]{pic/Coulomb/C2_dalpha_R1_S2correct.pdf}
+\caption{Kétrészecske Coulomb korrekció a Lévy eloszlás $\alpha$ paraméterének függvényében. A szaggatott vonal mutatja ~\aref{eq:Gamow} egyenlet által definiált Gamow faktort.}
+\label{fig:CRK2dalpha}
 \end{figure}
+
+\subsubsection{Háromrészecske Coulomb korrekció}
+
+Háromrészecske Coulomb integrál számolásához először meg kell határozni ~\aref{eq:S3} integrált, amely megadja a 3 részecske forrásfüggvényt. Azonban kétrészecske esetén ~\aref{fig:CRK2dalpha} ábra szerint a Coulomb integrál nem függ a Lévy eloszlás $\alpha$ paraméterétől, ezért az $\alpha=2$ közelítést alkalmazzuk az $\mathcal{S}_3$ kiszámolásához. Ekkor a Lévy eloszlás a jól ismert Gauss eloszlás lesz, amelyre analitikusan ki tudjuk számolni az $\mathcal{S}_3$ integrált.
+
+%Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{q}_1R_M}^\alpha+\abs{\bm{q}_2R_M}^\alpha$, akkor az $\mathcal{S}_3$ a következő lenne:
+%\begin{equation}
+%\mathcal{S}_3(\bm{r}_{12}, \bm{r}_{13})=\mathcal{L}(4\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+%\mathcal{L}(3\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
+%\end{equation}
+
 
 \section{Adatanalízis}
 \subsection{Adatok}
