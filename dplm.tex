@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[magyar]{babel}
@@ -19,7 +19,7 @@
 \usepackage{environ}
 \selectlanguage{magyar}
 \usepackage[hungarian]{algorithm2e}
-
+\usepackage{multirow}
 
 
 
@@ -64,10 +64,10 @@
 \textsc{\LARGE  Eötvös Loránd Tudományegyetem}\\[0.5cm]
 \textsc{\LARGE Természettudományi Kar}\\[0.5cm]
 \textsc{\LARGE Fizikai Intézet}\\[1.5cm]
-\vspace{8mm}
+\vspace{7mm}
 
 { \huge \bfseries Háromrészecske Bose-Einstein korrelációk vizsgálata}\\[0.4cm] % Title of your document
-\vspace{8mm}
+\vspace{7mm}
 
 \begin{center}
 \LARGE \textit{Bagoly Attila}\\
@@ -79,20 +79,21 @@
 \LARGE \textit{Csanád Máté}\\
 \Large \textit{ELTE TTK Atomfizikai tanszék}\\
 \end{center}
+
 \vspace{4mm}
-
-
+\begin{Large}
+\textbf{2017. május 31.}
+\end{Large}
+\vspace{2mm}
 
 \begin{figure}[H] 
 \centerline{ 
-\includegraphics[height=5cm]{pic/ELTE_logo.png} 
+\includegraphics[height=5.5cm]{pic/ELTE_logo.png} 
 } 
 \end{figure}
-\vspace{5mm}
-\begin{Large}
-\textbf{2017%. május 22.
-}
-\end{Large}
+
+\vspace{-4mm}
+
 
 \begin{figure}[H]
 \centering
@@ -195,7 +196,42 @@ A Fourier-sor szinuszos részét nem szoktuk külön kezelni, mivel a mérések 
 
 \subsection{A PHENIX kísérlet}
 
+A PHENIX (Pioneering
+High Energy Nuclear Interaction eXperiment) kísérlet az Amerikai Egyesült Államok  Brookhaveni Nemzeti Laboratóriumában működő Relativisztikus nehézion-ütköztető (RHIC) egyik detektorrendszere, amelynek adatain 14 ország több száz kutatója dolgozik (PHENIX kollaboráció). A relativisztikus nehézion-ütköztető két, egyenként $3.8$ km kerületű gyorsítógyűrűből áll, amelyek összesen 6 különböző pontban metszik egymást. A metszéspontokba épültek a különböző detektorrendszerek, amelyek közül ma már csak a két legnagyobb, a PHENIX és a STAR rendszerek aktívak.
 
+A PHENIX kísérlet detektorait ~\cite{Adcox:2003zm}, amelyet ~\aref{fig:phenix} ábra szemlélteti, két csoportba oszthatjuk: események globális tulajdonságait meghatározó, illetve az eseményekből kirepülő részecskék észlelését és tulajdonságait mérő detektorok.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.32]{pic/int/phenix1}
+\includegraphics[scale=0.32]{pic/int/phenix2}
+\caption{A PHENIX detektorrendszer. A baloldali ábra mutatja a detektorrendszer nyalábirányra merőleges metszetét, a jobboldali pedig nyalábiránnyal párhuzamosat.}
+\label{fig:phenix}
+\end{figure}
+
+\subsubsection{Eseményjellemző detektorok}\label{sec:phenix1}
+
+Az eseményjellemző detektorok meghatározzák egyrészt, hogy történt-e ütközés (jel a többi detektor számára, hogy mérni kell), másrészt az esemény fontos jellemzőit (ütközés pontos helye, geometriai elrendezése). Ilyen detektorok a Zero Degree Calorimeter (ZDC) és a Beam Beam Counter (BBC), melyek közül az analízis során a BBC detektort használtuk.
+
+A BBC detektor két karból áll, melyek nyalábirányban helyezkednek el egymástól $288$ cm távolságra, mint ~\aref{fig:phenix} jobb oldali ábrán látható. A karokban leadott töltésből meghatározható az esemény centralitása, azaz, hogy a két ütköző atommag mennyire ``középen'' találta el egymást. A két detektor a beérkezési időt is méri, amelynek különbségéből meghatározható az ütközés nyalábiránnyal párhuzamosan vett helye (z-vertex, koordináta-rendszer z tengelyét nyalábiránnyal párhuzamosan vesszük fel). A detektor időfelbontása $40$ ps, amely centrális ütközés esetén $0.5$ cm z-vertex felbontást eredményez.
+ 
+\subsubsection{Részecskeazonosító detektorok}\label{sec:phenix2}
+
+A részecskék azonosítása a részecskék impulzusának és sebességének meghatározásával történik. A sebesség mérése érdekében el kell végezni a részecskék pályájának rekonstrukcióját, amely, az úgynevezett nyomkövető detektorok: a Drift Chamber (DC) és az első Pad Chamber (PC1) segítségével történik (mindkettő sokszálas proporcionális kamra). 
+
+A DC detektorok a nyalábtól $2.02$ és $2.46$ méter távolságra helyezkednek el, és z irányba $180$ cm, transzverz irányba pedig $180^{\circ}$ tartományt fednek le. Ezek a detektorok transzverzális irányba ($\varphi$ szög) mérik a részecskék pályáját $1$ mrad szögfelbontással. A nyalábiránnyal párhuzamos mágneses tér hatására a részecskék pályája elgörbül, így DC detektor által mért görbületi sugárból a részecske transzverz impulzusa meghatározható.
+
+A PC1 detektorok közvetlenül a DC detektorok mögött helyezkednek el, és mind a nyaláb mind transzverz irányban mérik a részecske pályáját ($z$ és $\varphi$). A PC1 detektor által mért $z$ koordinátából és a BBC detektor által meghatározott z-vertex pozícióból meghatározható a részecskék nyalábirányú impulzusa.
+
+A részecskék impulzusa és pályája mellett meg kell határozni a repülési időt, amelyet az  ólom-szcintillátor elektromágneses kaloriméterek (PbSc) illetve repülésidő detektorok (TOF-E, TOF-W) segítségével tehetünk meg. Az elektromágneses kaloriméterek a detektorrendszer legszélén helyezkednek el, mivel ezek a berepülő részecskéket teljes energiájuk elnyerésével észlelik. A PbSc kaloriméterek segítségével pionok esetén körülbelül $400$ ps időfelbontás érhető el. A TOF-E repülésidő detektor a keleti szárnyban helyezkedik el közvetlenül a PbSc detektor előtt, azonban nem fedi le a teljes keleti oldalt. Ez a detektor fotoelektron-sokszorozókkal ellátott műanyag szcintillátorból áll, segítségével $140$ ps pontossággal mérhető a repülésidő. A TOF-W detektor a nyugati szárnyban, szintén a PbSc detektorok előtt helyezkedik el, valamint két különálló panelből áll. Ezen panelek sokréses ellenállás-kamra (resistive plate chamber) detektorok, amelyek $90$ ps felbontással képesek repülésidőt mérni.
+
+
+A DC/PC1 detektorok által rekonstruált pályából meghatározható a részecske által megtett út ($L$), továbbá a TOF/PbSc és BBC detektorok segítségével mérhető a repülési idő ($t$), melyekből megkapjuk a részecskék sebességét. Továbbá a DC/PC1 detektorok a részecske impulzusát is meghatározza, így minden szükséges mennyiséget ismerünk a részecske azonosításához. Ezen mennyiségekkel az azonosításhoz szükséges tömegnégyzet a következőképpen alakul:
+
+\begin{equation}
+m^2=\frac{p^2}{c^2}\Bigg[\bigg(\frac{ct}{L}\bigg)^2-1\Bigg]
+\label{eq:m2}
+\end{equation}
 
 \section{Bose-Einstein korrelációk}
 
@@ -558,6 +594,15 @@ A hullámfüggvény egyre normáltságát megkövetelve az $\mathcal{N}$ normál
 \label{eq:Gamow}
 \end{equation}
 amely az úgynevezett Gamow-faktor.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_nosym_AbsSQR-cropped.pdf}
+\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_sym_AbsSQR-cropped.pdf}
+\caption{A kétrészecske Coulomb hullámfüggvény $r_y=0$ metszete a $\bm{k}=(0,0,50)\;\mathrm{MeV}$ momentum esetén. Baloldali ábra a szimmetrizáció nélküli, míg a jobb oldali ábra a szimmetrizált  hullámfüggvényt mutatja. }
+\end{figure}
+
 \subsubsection{Háromrészecske}
 
 A háromrészecske Coulomb korrekció meghatározásához a háromrészecske Coulomb problémát kellene megoldani, azaz a következő Schrödinger egyenletet ~\cite{Alt:1998nr}:
@@ -580,13 +625,13 @@ ahol $\Psi_{\bm{k}_{12}}(\bm{r}_{12})$ a kétrészecske Coulomb probléma megold
 ahol $\mu$ a redukált tömeg (pion tömeg fele), valamint a $\bm{k}_{ij}$ az $i,j$ részecskepár relatív momentumának a fele. Az egyenlet megoldása:
 
 \begin{equation}
-\Psi_{\bm{k}_{ij}}(\bm{r}_{ij}) = \mathcal{N}_{ij}e^{i\bm{k}_{ij}\bm{r}_{ij}}F(-i\eta_{ij},1,i(k_{ij}r_{ij}-\bm{k}_{ij}\bm{r}_{ij})),\;\;\;\;\;\;
+\Psi_{\bm{k}_{ij}}(\bm{r}_{kl}) = \mathcal{N}_{ij}e^{i\bm{k}_{ij}\bm{r}_{kl}}F(-i\eta_{ij},1,i(k_{ij}r_{kl}-\bm{k}_{ij}\bm{r}_{kl})),\;\;\;\;\;\;
 \mathcal{N}_{ij}=e^{-\frac{\pi}{2}\eta_{ij}}\Gamma(1+i\eta_{ij}),
 \end{equation}
 ahol $\eta_{ij}=\frac{\mu\alpha}{2k_{ij}}$. Azonban annak érdekében, hogy ezt a megoldást használhassuk a háromrészecske hullámfüggvényben, a következő módosítást kell végrehajtani  ~\cite{Alt:1998nr,Biyajima:2003ey, Mizoguchi:2000km}:
 
 \begin{equation}
-\Psi_{\bm{k}_{ij}}(\bm{r}_{ij}) = \mathcal{N}_{ij}e^{i\frac{2}{3}\bm{k}_{ij}\bm{r}_{ij}}F(-i\eta_{ij},1,i(k_{ij}r_{ij}-\bm{k}_{ij}\bm{r}_{ij}))
+\Psi_{\bm{k}_{ij}}(\bm{r}_{kl}) = \mathcal{N}_{ij}e^{i\frac{2}{3}\bm{k}_{ij}\bm{r}_{kl}}F(-i\eta_{ij},1,i(k_{ij}r_{kl}-\bm{k}_{ij}\bm{r}_{kl}))
 \label{eq:Psikij}
 \end{equation}
 \Aref{eq:Psikij} egyenlet által megadott hullámfüggvényt a három relatív koordinátában véve és összeszorozva, valamint a szimmetrizációt elvégezve megkaphatjuk a háromrészecske Bose-Einstein korrelációk vizsgálatánál használt Coulomb hullámfüggvényt:
@@ -602,7 +647,6 @@ ahol $\eta_{ij}=\frac{\mu\alpha}{2k_{ij}}$. Azonban annak érdekében, hogy ezt 
 \Bigg]
 \end{aligned}
 \end{equation}
-
 
 
 \subsection{A Coulomb-korrekciós integrál}
@@ -918,7 +962,10 @@ A MapReduce programozási modell nem csak az integrálás során jött elő, han
 
 \subsubsection{Teszt: Coulomb kölcsönhatás nélküli eset}
 
-A számolás elvégzésére írt kódot modulárisan fejlesztettem, minden modult külön teszteltem. Minden elvégzett teszt bemutatása hosszadalmas lenne, ezért itt egy tesztet mutatok be, amely egy modul kivételével az össze modul megbízhatóságát mutatja (az egy kieső modul a komplex hipergeometrikus függvényt számoló kód, ezt a python mpmath könyvtár segítségével teszteltem). Amennyiben ~\aref{eq:K2} kétrészecske integrál nevezőjét tekintjük, felismerhetjük a korrelációs függvény definícióját, Coulomb kölcsönhatás nélküli esetben. Ez Lévy eloszlást feltételezve forrásfüggvénynek, ~\aref{eq:CHC2} összefüggés alapján a Lévy karakterisztikus függvénye lesz. Az eredményt ~\aref{fig:CRT} ábra szemlélteti. Látható, hogy a numerikus eredmény kellően pontosan reprodukálja az analitikusat.
+A számolás elvégzésére írt kódot modulárisan fejlesztettem, minden modult külön teszteltem. Minden elvégzett teszt bemutatása hosszadalmas lenne, ezért itt két tesztet mutatok be. 
+
+Az első teszt egy modul kivételével az össze modul megbízhatóságát mutatja (az egy kieső modul a komplex hipergeometrikus függvényt számoló kód, ezt a python mpmath könyvtár segítségével teszteltem). Amennyiben ~\aref{eq:K2} kétrészecske integrál nevezőjét tekintjük, felismerhetjük a korrelációs függvény definícióját, Coulomb kölcsönhatás nélküli esetben. Ez Lévy eloszlást feltételezve forrásfüggvénynek, ~\aref{eq:CHC2} összefüggés alapján a Lévy karakterisztikus függvénye lesz. Az eredményt ~\aref{fig:CRT} ábra szemlélteti. Látható, hogy a numerikus eredmény kellően pontosan reprodukálja az analitikusat.
+
 
 \begin{figure}[H]
 \centering
@@ -926,6 +973,16 @@ A számolás elvégzésére írt kódot modulárisan fejlesztettem, minden modul
 \includegraphics[scale=0.36]{pic/Coulomb/C2_noCoulomb_R246_a198.pdf}
 \caption{Coulomb kölcsönhatás nélküli kétrészecske korreláció számolása numerikusan és analitikusan, a kód tesztelése céljából.}
 \label{fig:CRT}
+\end{figure}
+
+
+A PHENIX magyar csoport már régóta foglakozik Bose-Einstein korrelációk vizsgálatával, ezért a Coulomb integrál betáblázatozása több körben megtörtént. Jelenleg a legutóbbi számolás eredményeként született táblázat van használatban, amelyet a Nagy Márton készített. Ezt fel lehet használni az általam készített kód tesztelésére. Az összehasonlítás ~\aref{fig:nmc} ábrán látható. Az ábra mutatja, hogy maximálisan $1\%$ a relatív eltérés a két számolás között, ez elfogadható.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pic/Coulomb/mynm}
+\caption{A fejlesztett kód tesztelése a Nagy Márton által számolt Coulomb integrál összehasonlítása révén.}
+\label{fig:nmc}
 \end{figure}
 
 \subsubsection{Kétrészecske Coulomb korrekció}
@@ -958,13 +1015,190 @@ Háromrészecske Coulomb integrál számolásához először meg kell határozni
 
 
 \section{Adatanalízis}
-\subsection{Adatok}
-\subsubsection{Egyrészecske vágások}
+
+Az analízis során a PHENIX detektorrendszerrel 2010-ben, $\sqrt{s_{NN}}=200\;\mathrm{GeV}$ tömegközépponti ütközési energián felvett arany-arany ütközések adatait használtam. Az adathalmaz körülbelül $7.3\cdot 10^9$ eseményt tartalmaz. A kalibrációkat és részecskeazonosítást Nagy Márton végezte el. Az általam analizált adatmennyiség tömörítve, binárisan formátumban tárolva $2.3$ TB volt. Az analízist a ROOT programcsomag segítségével végeztem ~\cite{root}.
+
+\subsection{Részecskeazonosítás}
+
+A részecskeazonosítás a ~\aref{sec:phenix2} fejezetben bemutatott módon történt, azaz először meghatároztuk a részecske pályáját a DC és PC1 detektor segítségével, majd ugyanezen detektorok segítségével a részecske momentumát, és végül  TOF és PbSc detektorok segítségével a repülési időt.
+
+Mivel a részecske pályáját a DC és PC1 detektorban mért pálya alapján rekonstruáltuk, és a megtett út meghatározása érdekében ezt a rekonstruált utat a TOF és PbSc detektorokba vetítettük, vizsgálni kell a projekcióhoz legközelebbi beütés és projekció helye közti különbség ($\varphi, z$ koordinátákban) eloszlását. Ezen az eloszláson alkalmaznunk kell különböző vágásokat (ezeket nevezzük 'matching' vágásoknak) amelyek a szisztematikus hiba egyik forrását fogják képezni. 
+
+Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kizárni a többi részecskét, ezért fontos, hogy a pontos részecskeazonosítás. Az ezt meghatározó vágásokat PID vágásnak nevezzük, és különböző vágások alkalmazása a szisztematikus hibaanalízis során vizsgálandó. A részecskeazonosítást a különböző detektorokban $2\sigma$ vágás esetén ~\aref{fig:m2sum} ábra szemlélteti.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofe_all.png}
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofw_all.png}\\
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_all.png}
+%\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_pid.png}
+\caption{Nagy Márton által végzett részecskeazonosítás a TOF és PbSc detektorokban, $2\sigma$ vágások alkalmazása mellett.}
+\label{fig:m2sum}
+\end{figure}
+
 \subsubsection{Kétrészecske vágások}
+
+\begin{itemize}
+\item DCH, EMCE, EMCW:
+\begin{equation}
+\Delta\varphi > \Delta\varphi_0-\frac{\Delta\varphi_0}{\Delta z_0}\Delta z \textnormal{ és } \Delta\varphi > \Delta\varphi_1 \label{e:newdchpaircut}
+\end{equation}
+\item TOFE:
+\begin{equation}
+\Delta\varphi > \Delta\varphi_0-\frac{\Delta\varphi_0}{\Delta z_0}\Delta z \label{e:newtofepaircut}
+\end{equation}
+\item TOFW:
+\begin{equation}
+\Delta\varphi > \Delta\varphi_0 \textnormal{ és } \Delta z > \Delta z_0 \label{e:newtofwpaircut}
+\end{equation}
+\end{itemize}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c||c|c|c||c|c|c||c|c||c|c|}\hline
+\multirow{2}{*}{\small{vágás}} 
+& \multicolumn{3}{c||}{DCH}
+& \multicolumn{3}{c||}{EMC}
+& \multicolumn{2}{c||}{TOFE}
+& \multicolumn{2}{c|}{TOFW}\\
+  & $\Delta z_0$ [fm] & $\Delta \varphi_0$ & $\Delta \varphi_1$ 
+  & $\Delta z_0$ [fm] & $\Delta \varphi_0$ & $\Delta \varphi_1$
+  & $\Delta z_0$ [fm] & $\Delta \varphi_0$
+  & $\Delta z_0$ [fm] & $\Delta \varphi_0$\\\hline\hline
+0 & 11 & 0.15 & 0.025 & 18 & 0.14 & 0.020 & 13 & 0.13 & 15.0 & 0.14\\\hline
+1 & 10 & 0.14 & 0.020 & 18 & 0.14 & 0.020 & 13 & 0.13 & 15.0 & 0.14\\\hline
+2 & 12 & 0.16 & 0.030 & 18 & 0.14 & 0.020 & 13 & 0.13 & 15.0 & 0.14\\\hline
+3 & 11 & 0.15 & 0.025 & 17 & 0.13 & 0.015 & 12 & 0.12 & 14.5 & 0.13\\\hline
+4 & 11 & 0.15 & 0.025 & 19 & 0.15 & 0.025 & 14 & 0.14 & 15.5 & 0.15\\\hline
+
+\end{tabular}
+\end{center}
+\caption{A (\ref{e:newdchpaircut})-(\ref{e:newtofwpaircut}) egyenletekben használt vágások paraméterei. A vágások hatását függetlenül vizsgáljuk, a 0-2 vágások a DCH detektorra, a 0,3,4 vágások pedig az EMC, TOFE, TOFW detektorokra vonatkoznak.}
+\label{t:newpaircuts}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_DCH_dzdp_mm.png}
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_DCH_dzdp_pp.png}\\
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_EMCE_dzdp_mm.png}
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_EMCW_dzdp_pp.png}\\
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_TOFE_dzdp_pp.png}
+\includegraphics[scale=0.17]{pic/dat/kd/Corr_TOFW_dzdp_mm.png}
+\end{figure}
+
+
 \subsection{Korrelációs függvény változói}
 \subsection{Korrelációs függvény mérése}
-\subsection{Szisztematikus hibák}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pic/dat/mixingevents}
+\end{figure}
+
+
+When we measure the actual and background momentum distribution, we will have a special order within the triplet, because going trough the particles of the events define an order between them. But the order within the triplet doesn't matter, so to remove this effect. We achieve this by folding both the $A$ and $B$ histograms, which means: we have to increase the value of $A(i,j,k)$ element:
+\begin{equation}
+A(i, j, k) = A(i,j,k) + A(i, k, j) + A(k, i, j) + A(k, j, i) + A(j, k, i) + A(j, i, k),
+\end{equation}
+and we also have to make zero all the combination besides $(i, j, k)$.
+
+After finishing this procedure, we can calculate the correlation function, same way as in PPG194:
+\begin{equation}
+C_3(k_{12}, k_{13}, k_{23})=\frac{A(k_{12}, k_{13}, k_{23})}{B(k_{12}, k_{13}, k_{23})}\frac{\int B}{\int A}
+\end{equation}
+
+In figure \ref{fig:f4} you can see the effect of the histogram folding. In these plots also can be seen that the triangle inequality for $\vec{k}_{12}$, $\vec{k}_{13}$, $\vec{k}_{23}$ vectors are satisfied.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.24]{pic/corrfunc/C1}
+\includegraphics[scale=0.24]{pic/corrfunc/C2}
+\caption{Left: measured histogram. Right: folded histogram.}
+\label{fig:f4}
+\end{figure}
+
+
 \subsection{Illesztett modell}
+\begin{equation}
+\Psi_{\boldsymbol{k_1}}(\boldsymbol{r_1})=e^{-i\boldsymbol{k_1}\boldsymbol{r_1}}
+\end{equation}
+To develop the wave function of three particle, we have to take three single particle wave function and create a symmetric combination, which gives the following wave function:
+\begin{align}
+\begin{split}
+\Psi_{\boldsymbol{k_1},\boldsymbol{k_2},\boldsymbol{k_3}}(\boldsymbol{r_1},\boldsymbol{r_2},\boldsymbol{r_3})=&\frac{1}{\sqrt{6}}\Big(e^{i\boldsymbol{\frac{2}{3}k_{12}}\boldsymbol{r_{12}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{23}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{31}}}+
+e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{13}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{32}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{21}}}+\\
++&e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{21}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{13}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{32}}}+
+e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{23}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{31}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{12}}}+\\
++&e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{31}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{12}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{23}}}+
+e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{32}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{21}}}
+e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{13}}}\Big)
+\label{eq:psi3}
+\end{split}
+\end{align}
+
+For similar reasons as in PPG194, instead of using $\bm{k_{ij}}$ as variable, which defines a $9$ dimensional space, we use the length of the momentum vector. In this way we reduced the dimension of the problem to $3$. For more details about this dimension reduction see the analysis note of PPG194.
+
+
+Using these wave functions and Levy distribution as source function, the correlation can be derived, same way as in PPG194. The final result is:
+\begin{align}
+C_3^{(0)}(k_{12}, k_{13}, k_{23}) = 1+ \ell_3e^{-0.5(|2k_{12}R|^\alpha+|2k_{13}R|^\alpha+|2k_{23}R|^\alpha)}\nonumber\\
++\ell_2\bigg(e^{|2k_{12}R|^\alpha}+e^{|2k_{13}R|^\alpha}+e^{|2k_{23}R|^\alpha}\bigg)
+\end{align}
+
+In this model the $R$ and $\alpha$ parameters are exactly the same as in PPG194, the new parameters are $\ell_2, \ell_3$. The $\ell_2$ parameter is the two particle correlation strength parameter in the three particle correlation function, and the $\ell_3$ is the tree particle strength parameter.
+
+We also have to complete this correlation function with a background, to be able to fit the model. We use simple linear background in every direction, with the same slope. With the background, the correlation function will be the following:
+\begin{equation}
+C_{3, \mathrm{fit}}^{(0)}(k_{12}, k_{13}, k_{23})= N(1+\epsilon k_{12})(1+\epsilon k_{13})(1+\epsilon k_{23})C_3^{(0)}(k_{12}, k_{13}, k_{23})
+\end{equation}
+
+
+
+
+\subsection{Szisztematikus hibák}
+
+
+We used the same sources of uncertainties that effect our fits as in PPG194. Below we list them, with the analysis settings we applied
+and checked the variations of the output parameters by varying these settings:
+\begin{itemize}
+\item PID cut ($1.5-2.5\sigma$ of normalized $m^2$ distributions, see table~\ref{t:singletrackcuts})
+\item PC3 matching cut ($1.5-\infty\sigma$ of normalized matching distributions, see table~\ref{t:singletrackcuts})
+\item Matching cut at PID detector ($1.5-2.5\sigma$ of normalized matching distributions, see table~\ref{t:singletrackcuts})
+\item DCH pair cut (three different cuts, see table~\ref{t:newpaircuts})
+\item Pair cut at PID detector (three different cuts, see table~\ref{t:newpaircuts})
+\item Choice of PID detector (EMCE, EMCW, TOFE, TOFW)
+\item Fit systematics: $|k|_{\rm min}$ cut (variations around central values ranging from 5 to 15 MeV)
+\end{itemize}
+We varied the settings of each of the above, and based on that, identified the amount of systematic uncertainty they cause.
+
+Let a given fit parameter $P$ (which represents here $R$, $\lambda$ or
+$\alpha$) take the value $P^0(i)$ (where $i$ represents the number of the
+$m_T$ bin) if all cuts and settings are at their default values. Then the
+resulting fit parameter may also be $P_n^j(i)$, if a value $j$ was chosen for the
+given setting (indicated by $n$). From these values, the systematic uncertainty of parameter
+$P$ at the given $m_T$ bin is calculated as the average deviation from the
+default value, for lower and upper uncertainties separately. This can be
+illustrated by the following formulas:
+\begin{align}
+\delta P^\uparrow(i)  &=\sqrt{\sum_{n={\rm cuts}}\frac{1}{N_n^{j\uparrow  }}\sum_{j\in J_n^\uparrow  }(P_n^j(i)-P^0(i))^2}\\
+\delta P^\downarrow(i)&=\sqrt{\sum_{n={\rm cuts}}\frac{1}{N_n^{j\downarrow}}\sum_{j\in J_n^\downarrow}(P_n^j(i)-P^0(i))^2}
+\end{align}
+where $J_n^\uparrow$ is the set of $j$ values where $P_n^j(i)>P^0(i)$, and
+$N_n^{j\uparrow}$ is the cardinality of this set. Similarly, $J_n^\downarrow$
+is the set of $j$ values where $P_n^j(i)<P^0(i)$, and $N_n^{j\downarrow}$ is
+the cardinality of this set. In the above formulas, summing on $j$ is only done
+if $N_n^{j\downarrow}>0$ or $N_n^{j\uparrow}>0$. The values for $\delta
+P^\uparrow(i)$ and $\delta P^\downarrow(i)$ were then averaged over the
+neighboring 5 $m_T$ bins (two bins at higher, and two bins
+at lower $m_T$, in addition to the central, averaged value). This procedure
+allowed us to smoothen out the apparently non-physically large fluctuations in
+the upper or lower limits on the systematic uncertainties.
+
 
 
 \section{Eredmények}
@@ -973,20 +1207,24 @@ Háromrészecske Coulomb integrál számolásához először meg kell határozni
 \centering
 \includegraphics[scale=0.6]{pic/res/diag_lowpt.pdf}
 \end{figure}
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{pic/res/diag_highpt.pdf}
 \end{figure}
+
 \subsection{Háromrészecske korrelációs erősség}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{pic/res/lambda3.pdf}
 \end{figure}
+
 \subsection{Parciális koherencia}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{pic/res/kappa3.pdf}
 \end{figure}
+
 
 \begin{figure}[H]
 \centering
