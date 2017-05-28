@@ -66,8 +66,9 @@
 \textsc{\LARGE Fizikai Intézet}\\[1.5cm]
 \vspace{7mm}
 
-{ \huge \bfseries Háromrészecske Bose-Einstein korrelációk vizsgálata}\\[0.4cm] % Title of your document
-\vspace{7mm}
+{ \huge \bfseries Háromrészecske Bose-Einstein korrelációk  }\\[0.2cm]
+{ \huge \bfseries vizsgálata a PHENIX kísérletben}\\[0.4cm] % Title of your document
+\vspace{6mm}
 
 \begin{center}
 \LARGE \textit{Bagoly Attila}\\
@@ -92,7 +93,7 @@
 } 
 \end{figure}
 
-\vspace{-4mm}
+\vspace{-5mm}
 
 
 \begin{figure}[H]
@@ -506,8 +507,9 @@ Az eddigiekben feltettük, hogy a forrás teljesen kaotikus, a kifagyott pionok 
 
 Az effektust mag-glória modellnél látottakhoz hasonló módon történő figyelembevétele érdekében bevezetjük a koherencia arányát, amely megadja, hogy a magból származó részecskék hányad része keletkezett koherens módon:
 \begin{equation}
-p_C = \frac{N_M^C}{N_M}
+p_C = \frac{N_M^C}{N_M^C+N_M^I},
 \end{equation}
+ahol $N_M^C$ a magban keletkezett koherens részecskék száma, míg $N_M^I$ az inkoherens módon keltett részecskék száma.
 
 Mag-glória modellnél láttuk, hogy amennyiben a részecskék nem csak közvetlenül a forró kvarkanyagból származnak, akkor az $n$ részecske korrelációs erősségek függeni fognak ~\aref{eq:fC} egyenlet által definiált magaránytól ~\aref{eq:CHlambdan} egyenlet által meghatározott módon. Ehhez hasonlóan, azt mondhatjuk, hogy amennyiben részecske keletkezés során van parciális koherencia, akkor az $n$ részecske korrelációs erősség függeni fog a magarány mellett a koherencia arányától a következő módon ~\cite{Csorgo:1998tn, Csorgo:1997uf}:
 
@@ -599,8 +601,8 @@ amely az úgynevezett Gamow-faktor.
 
 \begin{figure}[H]
 \centering
-%\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_nosym_AbsSQR-cropped.pdf}
-%\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_sym_AbsSQR-cropped.pdf}
+\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_nosym_AbsSQR-cropped.pdf}
+\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_sym_AbsSQR-cropped.pdf}
 \caption{A kétrészecske Coulomb hullámfüggvény $r_y=0$ metszete a $\bm{k}=(0,0,50)\;\mathrm{MeV}$ momentum esetén. Baloldali ábra a szimmetrizáció nélküli, míg a jobb oldali ábra a szimmetrizált  hullámfüggvényt mutatja. }
 \end{figure}
 
@@ -1010,7 +1012,7 @@ Háromrészecske Coulomb integrál számolásához először meg kell határozni
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{pic/Coulomb/K3_error1.pdf}
+\includegraphics[scale=0.5]{pic/Coulomb/K3_error2.pdf}
 \end{figure}
 %Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{q}_1R_M}^\alpha+\abs{\bm{q}_2R_M}^\alpha$, akkor az $\mathcal{S}_3$ a következő lenne:
 %\begin{equation}
@@ -1203,7 +1205,7 @@ A hajtogatást az aktuális és háttéreloszláson kell végezni, a korreláci�
 \end{figure}
 
 
-\subsection{Illesztett modell}
+\subsection{Illesztett modell}\label{sec:fit}
 
 A kvantumstatisztikai modell meghatározása a kétrészecskés esetben bemutatotthoz hasonlóan történik, azaz kétrészecskés hullámfüggvény relatív koordinátafüggésére síkhullámot használunk:
 \begin{equation}
@@ -1262,67 +1264,102 @@ Tapasztalataink azt mutatták, hogy ez a háttérválasztás megfelelő, és nem
 
 \subsection{Szisztematikus hibák}
 
+Az előző fejezetekben láttuk, hogy a detektorok esetén különböző matching illetve párvágásokat alkalmazhatunk, amelyek a szisztematikus hiba leglényegesebb forrásai. A detektorrendszerből származó szisztematikus hiba mellett az illesztésnél előredefiniált paraméterek választása is hozzájárul a szisztematikus hibához (ezek közül az egyetlen jelentős hibaforrás az illesztési tartomány megválasztása). A szisztematikus hibaforrásokat és az alkalmazott vágásokat a következő lista foglalja össze:
 
-We used the same sources of uncertainties that effect our fits as in PPG194. Below we list them, with the analysis settings we applied
-and checked the variations of the output parameters by varying these settings:
 \begin{itemize}
-\item PID cut ($1.5-2.5\sigma$ of normalized $m^2$ distributions, see table~\ref{t:singletrackcuts})
-\item PC3 matching cut ($1.5-\infty\sigma$ of normalized matching distributions, see table~\ref{t:singletrackcuts})
-\item Matching cut at PID detector ($1.5-2.5\sigma$ of normalized matching distributions, see table~\ref{t:singletrackcuts})
-\item DCH pair cut (three different cuts, see table~\ref{t:newpaircuts})
-\item Pair cut at PID detector (three different cuts, see table~\ref{t:newpaircuts})
-\item Choice of PID detector (EMCE, EMCW, TOFE, TOFW)
-\item Fit systematics: $|k|_{\rm min}$ cut (variations around central values ranging from 5 to 15 MeV)
+\item PID vágás: 3 különböző vágás ($1.5\sigma,\;2\sigma$ és $2.5\sigma$)
+\item PC3 matching vágás: 3 különböző vágás ($1.5\sigma,\;2\sigma$ és $2.5\sigma$)
+\item Matching vágás a PID detektorokban: 3 különböző vágás ($1.5\sigma,\;2\sigma$ és $2.5\sigma$)
+\item Párvágás a DCH detektorban: három különböző vágás (\aref{tab:paircuts} táblázat 0,1,2 sora)
+\item Párvágás a PID detektorban: három különböző vágás (\aref{tab:paircuts} táblázat 0,3,4 sora)
+\item PID nyugati/keleti kar választása: három vágás (mindkető, keleti, nyugati)
+\item Illesztés határának változtatása: $k_{\rm min}$ vágás (több vágás a $5-15$ MeV tartományban)
 \end{itemize}
-We varied the settings of each of the above, and based on that, identified the amount of systematic uncertainty they cause.
 
-Let a given fit parameter $P$ (which represents here $R$, $\lambda$ or
-$\alpha$) take the value $P^0(i)$ (where $i$ represents the number of the
-$m_T$ bin) if all cuts and settings are at their default values. Then the
-resulting fit parameter may also be $P_n^j(i)$, if a value $j$ was chosen for the
-given setting (indicated by $n$). From these values, the systematic uncertainty of parameter
-$P$ at the given $m_T$ bin is calculated as the average deviation from the
-default value, for lower and upper uncertainties separately. This can be
-illustrated by the following formulas:
+A szisztematikus hiba kiszámolása érdekében jelöljük az analízis során kapott mennyiségeket $P$-vel ($\lambda_3$, $\kappa_3$, $R$, $\alpha$). Az alapvágásoknál ennek az értékét jelöljük $P^0(i)$-val (ahol az $i$ az $m_T$ bin száma). Más vágások alkalmazása esetén a paraméter értéke megváltozhat, $n$ típusú vágás vizsgálata során a $j$-ik beállítás esetén a paraméter értékét jelöljük $P_n^j(i)$-vel. Adott $m_T$ esetén a $P$ paraméter szisztematikus hibáját a felső és alsó eltéréseket különválasztva a következőképpen számolhatjuk:
+
 \begin{align}
 \delta P^\uparrow(i)  &=\sqrt{\sum_{n={\rm cuts}}\frac{1}{N_n^{j\uparrow  }}\sum_{j\in J_n^\uparrow  }(P_n^j(i)-P^0(i))^2}\\
-\delta P^\downarrow(i)&=\sqrt{\sum_{n={\rm cuts}}\frac{1}{N_n^{j\downarrow}}\sum_{j\in J_n^\downarrow}(P_n^j(i)-P^0(i))^2}
+\delta P^\downarrow(i)&=\sqrt{\sum_{n={\rm cuts}}\frac{1}{N_n^{j\downarrow}}\sum_{j\in J_n^\downarrow}(P_n^j(i)-P^0(i))^2},
 \end{align}
-where $J_n^\uparrow$ is the set of $j$ values where $P_n^j(i)>P^0(i)$, and
-$N_n^{j\uparrow}$ is the cardinality of this set. Similarly, $J_n^\downarrow$
-is the set of $j$ values where $P_n^j(i)<P^0(i)$, and $N_n^{j\downarrow}$ is
-the cardinality of this set. In the above formulas, summing on $j$ is only done
-if $N_n^{j\downarrow}>0$ or $N_n^{j\uparrow}>0$. The values for $\delta
-P^\uparrow(i)$ and $\delta P^\downarrow(i)$ were then averaged over the
-neighboring 5 $m_T$ bins (two bins at higher, and two bins
-at lower $m_T$, in addition to the central, averaged value). This procedure
-allowed us to smoothen out the apparently non-physically large fluctuations in
-the upper or lower limits on the systematic uncertainties.
+ahol $J_n^\uparrow$ azon $j$ értékek halmaza, amelyekre $P_n^j(i)>P^0(i)$, és $N_n^{j\uparrow}$ ezen halmaz számossága. Hasonlóan $J_n^\downarrow$ azon $j$ értékek halmaza amelyekre $P_n^j(i)<P^0(i)$, és  $N_n^{j\downarrow}$ ezen halmaz számossága. Az így kapott $\delta
+P^\uparrow(i)$ és $\delta P^\downarrow(i)$ hibák nem fizikai fluktuációkat tartalmaznak, amelyeket egy $5$ pontos súlyozott átlagolással simítottunk ki.
+
 
 
 
 \section{Eredmények}
 
+Az analízis során a $\pi^-\pi^-\pi^-$ és $\pi^+\pi^+\pi^+$ triplettek közti Bose-Einstein korrelációt vizsgáltam. ~\Aref{sec:fit} fejezetben bemutatott $C_{3, \mathrm{fit}}^{(0)}$ modellt a Coulomb korrekciós integrállal osztva illesztettem a mérési adatokra, meghatározva a modell $R, \alpha, \ell_2, \ell_3, \varepsilon, N$ paramétereit. Az illesztéseket $m_T$ transzverz tömeg $32$ binjében végeztem, a $180-850$ MeV tartományban.
+
+\subsection{Lévy eloszlás paraméterei}
+
+A Lévy eloszlás $\alpha$ és $R$ sugárparaméterére a várakozásunk az volt, hogy megegyezik a kétrészecske analízisből kapott eredménnyel, hisz ezek a paraméterek a forrásra jellemzőek, és nem lehetnek érzékenyek arra, hogy hány részecske közti korrelációt vizsgálunk.  A várakozásunknak megfelelően az illesztésből kapott $R$ és $\alpha$ paraméter megegyezett a kétrészecske analízis során kapott paraméterekkel. Az utóbbiakat mutatja ~\aref{fig:aR} ábra. Az $\alpha(m_T)$ ábra mutatja, hogy ez a paraméter minden $m_T$ esetén jelentősen eltér az $\alpha=2$ esettől, azaz a Gauss eloszlástól.
+
+Mivel a tesztillesztések során az $R$ és $\alpha$ paraméter megegyezett a kétrészecske analízisben meghatározott paraméterekkel, ezért a végső illesztésekben ezeket a paramétereket a lefixáltuk a kétrészecske analízisben kapott értékere (ezeket mutatja ~\aref{fig:aR} ábra). Ezzel az illesztési paraméterek számát $6$-ról $4$-re csökkentettük, ami jelentősen növelte az illesztési sebességet, valamint az illesztések stabilitását.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.39]{pic/res/R_preliminary_stamp.pdf}
+\includegraphics[scale=0.39]{pic/res/alpha_preliminary_stamp.pdf}
+\caption{A kétrészecske analízis ~\cite{AN1244} során kapott $R$ és $\alpha$ illesztési paraméterek az $m_T$ függvényében.}
+\label{fig:aR}
+\end{figure}
+
 \subsection{Háromrészecske korrelációs erősség}
+
+Az $\ell_2$ és $\ell_3$ illesztési paraméterek segítségével a háromrészecske korreláció erősség megkapható: $\lambda_3=\ell_3-3\ell_2$. A korreláció erősségre kapott $m_T$ függést ~\aref{fig:lambda3} ábra mutatja. Az ábrán látható mag-glória modellben kaotikus forrás esetén a $\lambda_3$ megengedett tartománya (zöld doboz). Továbbá az ábrán kék dobozok mutatják a szisztematikus hibát, a szokásos hibajelzők pedig a statisztikus hibát. Az ábra mutatja, hogy a korrelációs erősség minden $m_T$ esetén a megengedett tartományban helyezkedik el.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{pic/res/lambda3.pdf}
+\caption{A háromrészecske korrelációs erősségének az $m_T$ függése. Az ábrán a pontok köré rajzolt dobozok mutatják a szisztematikus hibát.}
+\label{fig:lambda3}
 \end{figure}
 
 \subsection{Parciális koherencia}
+
+A mag-glória modell esetén már bevezettük a magarány paraméterét, valamint a parciális koherencia vizsgálata érdekében a koherensen keltett pionok arányát, melyeknek a definíciója az alábbi:
+\begin{equation}
+f_C=\frac{N_M}{N_M+N_G},\;\;\;\;\;\;\;\;\;\;\;p_C = \frac{N_M^C}{N_M^C+N_M^I},
+\end{equation}
+ahol $N_M$ a magban, $N_G$ a glóriában keletkezett részecskék száma. Az $N_M^C$ a magban koherensen keletkezett, $N_M^I$ az inkoherens módon keletkezett részecskék száma.
+
+A két- és háromrészecske korrelációs erősségeknek ($\lambda_2,\;\lambda_3$) a már bevezetett, $\kappa_3$-al jelölt, kombinációjának specialitása, hogy nem függ az $f_C$ paramétertől, azaz tisztán mag-glória modell esetén $\kappa_3=1$ minden $m_T$-re. A paraméter a $\lambda_3,\; \lambda_2$ korrelációs erősségek alábbi kombinációja:
+
+\begin{equation}
+\kappa_3 = \frac{\lambda_3-3\lambda_2}{2\sqrt{\lambda_2^3}}
+\end{equation}
+
+Láttuk továbbá, hogy amennyiben a mag részben koherens módon kelt részecskéket, amit a $p_C$ paraméterrel jellemzünk, a $\kappa_3$ már nem lesz konstans, ehelyett valamilyen nem triviális $p_C$ függéssel rendelkezik. Azaz ha az $m_T$ függvényében a $p_C$ változik, akkor a $\kappa_3$ paraméter is fog változni az $m_T$ függvényében. ~\Aref{fig:kappa3} ábra mutatja ezen paraméter $m_T$ függését. Az ábra azt mutatja, hogy a $\kappa_3=1$ esettől statisztikailag szignifikáns eltérés van, amely lehetőség ad a parciális koherencia létezésére.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{pic/res/kappa3.pdf}
+\caption{A $\kappa_3$ paraméter $m_T$ függése. Az ábrán a pontok köré rajzolt dobozok mutatják a szisztematikus hibát.}
+\label{fig:kappa3}
 \end{figure}
 
+Mivel a $\kappa_3(m_T)$ ábra nem zárta ki a parciális koherencia létét, tovább vizsgáltuk ezt a jelenséget. Az előző fejezetekben tárgyaltam, hogy amennyiben létezik a jelenség, a két- és háromrészecske korrelációs erősségek a következő alakban írhatók fel:
+
+\begin{equation}
+\begin{aligned}
+\lambda_2(f_C, p_C) =  f_C^2\big[(1-p_C)^2+2p_C(1-p_C)\big]\\
+\lambda_3(f_C, p_C) =  2f_C^3\big[(1-p_C)^3+3p_C(1-p_C)^2\big]+3f_C^2\big[(1-p_C)^2+2p_C(1-p_C)\big]
+\end{aligned}
+\label{eq:l2l3}
+\end{equation}
+
+Adott $m_T$ esetén ismerjük a $\lambda_2$ és $\lambda_3$ korrelációs erősségeket. Ezeket ~\aref{eq:l2l3} összefüggésekbe beírva kapunk két egyenletet az $f_C$ paraméterre, mint a $p_C$ függvénye. Ezután a $0<p_C<1$ értékeire mindkét $f_C(p_C)$ függvényt ábrázolhatjuk. Ezt láthatjuk két különböző $m_T$ esetén ~\aref{fig:fcpc} ábrákon. Az ábrán a sávok mutatják az $1\sigma$ statisztikus hibát, amely a $\lambda_2,\;\lambda_3$ statisztikus hibájából adódik.
+
+~\Aref{fig:fcpc} ábrák alapján a két vizsgált $m_T$ érték esetén kizárható a $80\%$-nál kisebb magarány. Kizárható továbbá a domináns parciális koherencia léte, azaz az $50\%$-nál több koherens módon keltett pion, a két vizsgált transzverz tömeg esetén. Azonban ezen ábrák alapján lehetséges az $50\%$-nál kisebb parciális koherencia. Sőt, az ábrák mutatják, hogy lehetőség van a koherencia arányának modellfüggő meghatározására. A koherencia aránya $\lambda_2$ és $\lambda_3$ görbék metszéspontjából kapható meg. Az ábrák alapján $m_T=250$ MeV esetén $p_C\approx 15\%$, $m_T=360$ MeV esetén pedig $p_C\approx 32\%$.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{pic/res/fcpc1.pdf}
-\end{figure}
-\begin{figure}[H]
-\centering
 \includegraphics[scale=0.5]{pic/res/fcpc2.pdf}
+\caption{A megmért $\lambda_2,\;\lambda_3$ paramétereket ~\aref{eq:l2l3} egyenletekbe helyesítve adódik a két $f_C(p_C)$ függvény. Az ábrán a sávok mutatják az $1\sigma$ statisztikai hibát.}
+\label{fig:fcpc}
 \end{figure}
 
 \section{Összefoglaló}
