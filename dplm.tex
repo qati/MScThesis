@@ -289,7 +289,7 @@ Továbbá könnyedén belátható, hogy ~\aref{eq:Nn} egyenletben szereplő hull
 ahol $\sum_{(\alpha)}$ az $(1,2,\dots,n)$ összes permutációjára való összegzés.
 
 
-\subsection{Két nem kölcsönható részecske korrelációs függvénye}
+\subsection{Két nem kölcsönható részecske korrelációs függvénye}\label{sec:C20}
 
 Két azonos részecske esetén, nem kölcsönható esetben ~\aref{eq:Sch} egyenlet könnyedén megoldható, megoldásai a jól
 ismert síkhullámok. A kétrészecskés invariáns impulzuseloszlásban szereplő hullámfüggvény szimmetrizáció
@@ -300,13 +300,13 @@ elvégzése után a következő lesz:
 
 Tömegközépponti koordináta rendszerben, azaz a következő változókra való áttérés után (ezen transzformáció esetén az integrálási mérték nem változik, hiszen $d^4x_1d^4x_2=d^4Rd^4r$):
 \begin{equation}
-{K}={p_1+p_2},\;\;\;\;{k}=\frac{{p_1-p_2}}{2},\;\;\;\;{r}={x_1-x_2},\;\;\;\;{R}=\frac{{x_1+x_2}}{2}
+{K}=\frac{p_1+p_2}{2},\;\;\;\;{k}=\frac{{p_1-p_2}}{2},\;\;\;\;{r}={x_1-x_2},\;\;\;\;{R}=\frac{{x_1+x_2}}{2}
 \label{eq:CMF}
 \end{equation}
 \noindent
 a hullámfüggvény abszolút értéke a következő alakra egyszerűsödik:
 \begin{equation}
-\abs{\Psi_{{p_1}{p_2}}({r},{R})} = \frac{1}{\sqrt{2}}\abs{e^{{KR}}(e^{i{kr}}+e^{-i{kr}})}=\sqrt{2}\abs{\cos{2{kr}}}
+\abs{\Psi_{{p_1}{p_2}}({r},{R})} = \frac{1}{\sqrt{2}}\abs{e^{i{2KR}}(e^{i{kr}}+e^{-i{kr}})}=\sqrt{2}\abs{\cos{2{kr}}}
 \end{equation}
 
 Ebből következőleg a kétrészecske invariáns momentumeloszlásra a következő alak adódik):
@@ -325,7 +325,7 @@ Az egyrészecske invariáns momentumeloszlásra pedig $N_1({p})=\tilde{\mathcal{
 C_2({p_1},{p_2}) = 1+ \frac{\tilde{\mathcal{S}}(2{k}, {p_1})\tilde{\mathcal{S^*}}(2{k}, {p_2})+\tilde{\mathcal{S^*}}(2\bm{k},{ p_1})\tilde{\mathcal{S}}(2\bm{k}, {p_2})}{2\tilde{\mathcal{S}}(0, {p_1})\tilde{\mathcal{S}}(0, {p_2})}
 \end{equation}
 
-Szokás alkalmazni a ${p_1}\approx {p_2}\approx {K} = p_1+p_2$ közelítést ($q\ll K$), amelyet az indokol, hogy a  forrást Fourier transzformáltjának az egyes részecskék momentumától való függése sokkal simább mint a relatív momentumtól való függése ~\cite{Lisa:2005dd}. A kétrészecske korrelációs függvény ekkor: 
+Szokás alkalmazni a ${p_1}\approx {p_2}\approx {K} = p_1+p_2$ közelítést ($q\ll K$), amelyet az indokol, hogy a forrás Fourier transzformáltjának az egyes részecskék momentumától való függése sokkal simább mint a relatív momentumtól való függése ~\cite{Lisa:2005dd}. A kétrészecske korrelációs függvény ekkor: 
 \begin{equation}
 C_2({k}, {K})=1+\frac{\abs{\tilde{\mathcal{S}}({k},{K})}^2}{\abs{\tilde{\mathcal{S}}(0,{K})}^2}
 \label{eq:C02}
@@ -337,9 +337,10 @@ Ez az alak azt a fontos üzenetet hordozza, hogy a kétrészecske korrelációs 
 A korrelációs függvény a $k,K$ négyes impulzusok helyett hármas momentumokkal is kifejezhető, ugyanis a két négyesmomentum szorzata definíció és az egyes részecskék tömeghéj feltétele ($p_{i\mu}p^{\mu}_i=0$) alapján eltűnik, azaz:
 \begin{equation}
 0=kK=k_0K_0-\bm{kK}\Rightarrow k_0 = \frac{\bm{kK}}{K_0}
+\label{eq:kK}
 \end{equation}
 
-A $p_1\approx p_2\approx K$ feltevés alapján a $K$ körülbelül tömeghéjon van, azaz $K_0 = \sqrt{m^2-\bm{K}^2}$, így a korrelációs függvény a $k,K$ négyes-momentumok helyett a $\bm{k},\bm{K}$ hármas-momentumok függvényeként is tekinthető.
+A $p_1\approx p_2\approx K$ feltevés alapján a $K$ körülbelül tömeghéjon van, azaz $K_0 = \sqrt{m^2-\bm{K}^2}$, így a korrelációs függvény a $k,K$ négyes-momentumok helyett a $\bm{k},\bm{K}$ hármas-momentumok függvényeként is tekinthető. Ezen közelítés jogosságát ~\cite{Wiedemann:1999qn, Csorgo:1999sj} cikkek részletesen tárgyalják.
 
 \subsection{Forrás függvény}
 ~\Aref{eq:Nn} egyenletben szereplő $\mathcal{S}({p},{x})$ függvényt nevezzük forrásfüggvénynek, ez megadja annak a valószínűségét, hogy ${x}$ helyen keletkezik egy ${p}$ impulzusú részecske. Az általunk vizsgált energiákon, az ütközés során kvark-gluon plazma keletkezik, amely robbanásszerűen tágul, melynek következtében csökken a hőmérséklete. Ha lokálisan a QGP elér egy bizonyos hőmérsékletet, akkor fázisátmenet történik, kifagynak a kvark szabadsági fokok és hadronok keletkeznek. A forrásfüggvényt épp ezen fázisátmenetek határozzák meg. 
@@ -598,8 +599,8 @@ amely az úgynevezett Gamow-faktor.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_nosym_AbsSQR-cropped.pdf}
-\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_sym_AbsSQR-cropped.pdf}
+%\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_nosym_AbsSQR-cropped.pdf}
+%\includegraphics[scale=0.35]{pic/Coulomb/Psi2_rxry_sym_AbsSQR-cropped.pdf}
 \caption{A kétrészecske Coulomb hullámfüggvény $r_y=0$ metszete a $\bm{k}=(0,0,50)\;\mathrm{MeV}$ momentum esetén. Baloldali ábra a szimmetrizáció nélküli, míg a jobb oldali ábra a szimmetrizált  hullámfüggvényt mutatja. }
 \end{figure}
 
@@ -664,7 +665,7 @@ K(\bm{p}_1,\bm{p}_2)=
 \label{eq:Kn2}
 \end{equation}
 
-A kétrészecske Coulomb probléma tárgyalásánál láttuk, hogy célszerű áttérni az $\bm{r}=\bm{r_1}-\bm{r_2}$, $2\bm{R}=\bm{r_1}+\bm{r_2}$, $2\bm{k}=\bm{p_1}-\bm{p_2}$ és $\bm{K}=\bm{p_1}+\bm{p_2}$ változókra, ekkor ugyanis mind a szabad, mind a Coulomb hullámfüggvény négyzete $\bm{R}$ és  $\bm{K}$ független lesz:
+A kétrészecske Coulomb probléma tárgyalásánál láttuk, hogy célszerű áttérni az $\bm{r}=\bm{r_1}-\bm{r_2}$, $2\bm{R}=\bm{r_1}+\bm{r_2}$, $2\bm{k}=\bm{p_1}-\bm{p_2}$ és $2\bm{K}=\bm{p_1}+\bm{p_2}$ változókra, ekkor ugyanis mind a szabad, mind a Coulomb hullámfüggvény négyzete $\bm{R}$ és  $\bm{K}$ független lesz:
 \begin{equation}
 \abs{\Psi_{\bm{k},\bm{K}}(\bm{r},\bm{R})}^2 = \abs{e^{i\bm{KR}}\Psi_{\bm{k}}(\bm{r})}^2=\abs{\Psi_{\bm{k}}(\bm{r})}^2,
 \end{equation}
@@ -680,7 +681,7 @@ K(\bm{k},\bm{K})=
 \end{equation}
 ahol a bevezetett $\mathcal{S}_2$ a következőképpen számolható:
 \begin{equation}
-\mathcal{S}_2(\bm{r}, \bm{k},\bm{K}) = \int \mathcal{S}\Big(\bm{k}+\frac{1}{2}\bm{K}, \bm{R}+\frac{1}{2}\bm{r}\Big)\mathcal{S}\Big(\bm{k}-\frac{1}{2}\bm{K}, \bm{R}-\frac{1}{2}\bm{r}\Big)d^3\bm{R}.
+\mathcal{S}_2(\bm{r}, \bm{k},\bm{K}) = \int \mathcal{S}\Big(\bm{K}+\bm{k}, \bm{R}+\frac{1}{2}\bm{r}\Big)\mathcal{S}\Big(\bm{K}-\bm{k}, \bm{R}-\frac{1}{2}\bm{r}\Big)d^3\bm{R}.
 \end{equation}
 Ez az integrál elvégezhető, amennyiben a forrást $\alpha, R_M$ paraméterekkel jellemzett Lévy eloszlásnak tekintjük, a végeredmény a következő lesz:
 \begin{equation}
@@ -1007,6 +1008,10 @@ A kétrészecske Coulomb integrál relatív impulzus különbség felétől val�
 
 Háromrészecske Coulomb integrál számolásához először meg kell határozni ~\aref{eq:S3} integrált, amely megadja a 3 részecske forrásfüggvényt. Azonban kétrészecske esetén ~\aref{fig:CRK2dalpha} ábra szerint a Coulomb integrál nem függ a Lévy eloszlás $\alpha$ paraméterétől, ezért az $\alpha=2$ közelítést alkalmazzuk az $\mathcal{S}_3$ kiszámolásához. Ekkor a Lévy eloszlás a jól ismert Gauss eloszlás lesz, amelyre analitikusan ki tudjuk számolni az $\mathcal{S}_3$ integrált.
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pic/Coulomb/K3_error1.pdf}
+\end{figure}
 %Ha azt mondhatnánk, hogy $\abs{\bm{q}_1R_M+\bm{q}_2R_M}^\alpha\approx \abs{\bm{q}_1R_M}^\alpha+\abs{\bm{q}_2R_M}^\alpha$, akkor az $\mathcal{S}_3$ a következő lenne:
 %\begin{equation}
 %\mathcal{S}_3(\bm{r}_{12}, \bm{r}_{13})=\mathcal{L}(4\bm{r}_{12}+\bm{r}_{13}, \alpha, 2^{\frac{1}{\alpha}}R_M)
@@ -1018,25 +1023,43 @@ Háromrészecske Coulomb integrál számolásához először meg kell határozni
 
 Az analízis során a PHENIX detektorrendszerrel 2010-ben, $\sqrt{s_{NN}}=200\;\mathrm{GeV}$ tömegközépponti ütközési energián felvett arany-arany ütközések adatait használtam. Az adathalmaz körülbelül $7.3\cdot 10^9$ eseményt tartalmaz. A kalibrációkat és részecskeazonosítást Nagy Márton végezte el. Az általam analizált adatmennyiség tömörítve, binárisan formátumban tárolva $2.3$ TB volt. Az analízist a ROOT programcsomag segítségével végeztem ~\cite{root}.
 
+A kvantumstatisztikai korrelációkat különböző részecskék esetén vizsgálhatjuk (pionok, kaonok, protonok, stb.). Annak érdekében, hogy legyen elég statisztikánk a háromrészecske analízishez, az ütközések során legnagyobb számba létrejövő azonos töltésű pionok esetén vizsgáltam a Bose-Einstein korrelációkat.
+
 \subsection{Részecskeazonosítás}
 
 A részecskeazonosítás a ~\aref{sec:phenix2} fejezetben bemutatott módon történt, azaz először meghatároztuk a részecske pályáját a DC és PC1 detektor segítségével, majd ugyanezen detektorok segítségével a részecske momentumát, és végül  TOF és PbSc detektorok segítségével a repülési időt.
 
-Mivel a részecske pályáját a DC és PC1 detektorban mért pálya alapján rekonstruáltuk, és a megtett út meghatározása érdekében ezt a rekonstruált utat a TOF és PbSc detektorokba vetítettük, vizsgálni kell a projekcióhoz legközelebbi beütés és projekció helye közti különbség ($\varphi, z$ koordinátákban) eloszlását. Ezen az eloszláson alkalmaznunk kell különböző vágásokat (ezeket nevezzük 'matching' vágásoknak) amelyek a szisztematikus hiba egyik forrását fogják képezni. 
+Mivel a részecske pályáját a DC és PC1 detektorban mért pálya alapján rekonstruáltuk, és a megtett út meghatározása érdekében ezt a rekonstruált utat a TOF és PbSc detektorokba vetítettük, vizsgálni kell a projekcióhoz közeli beütések és projekció helye közti különbség ($\varphi, z$ koordinátákban) eloszlását. Ezen az eloszláson vágást kell alkalmaznunk (ezt nevezzük 'matching' vágásnak). Különböző matching vágások alkalmazása a szisztematikus hiba egyik fontos forrása.
 
-Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kizárni a többi részecskét, ezért fontos, hogy a pontos részecskeazonosítás. Az ezt meghatározó vágásokat PID vágásnak nevezzük, és különböző vágások alkalmazása a szisztematikus hibaanalízis során vizsgálandó. A részecskeazonosítást a különböző detektorokban $2\sigma$ vágás esetén ~\aref{fig:m2sum} ábra szemlélteti.
+Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kizárni a többi részecskét, ezért fontos, a pontos részecskeazonosítás. Az ezt meghatározó vágásokat PID vágásnak nevezzük, és különböző vágások alkalmazása a szisztematikus hibaanalízis során vizsgálandó. A részecskeazonosítást a különböző detektorokban $2\sigma$ vágás esetén ~\aref{fig:m2sum1} és ~\aref{fig:m2sum2} ábra szemlélteti.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofe_all.png}
-\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofw_all.png}\\
-\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_all.png}
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofe_pid.png}\\
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofw_all.png}
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_tofw_pid.png}
 %\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_pid.png}
-\caption{Nagy Márton által végzett részecskeazonosítás a TOF és PbSc detektorokban, $2\sigma$ vágások alkalmazása mellett.}
-\label{fig:m2sum}
+\caption{Nagy Márton által végzett részecskeazonosítás a TOF detektorokban, $2\sigma$ PID vágások alkalmazása mellett (baloldali ábra vágás nélkül, jobb oldali a PID vágás alkalmazása után).}
+\label{fig:m2sum1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_all.png}
+\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_pid.png}
+%\includegraphics[scale=0.39]{pic/dat/nm/h_m2sum_pbsc_pid.png}
+\caption{Nagy Márton által végzett részecskeazonosítás a PbSc detektorokban, $2\sigma$ vágások alkalmazása mellett (baloldali ábra vágás nélkül, jobb oldali a PID vágás alkalmazása után).}
+\label{fig:m2sum1}
 \end{figure}
 
 \subsubsection{Kétrészecske vágások}
+
+Ettől a fejezettől kezdve a PbSc detektorok keleti karban levő részére EMCE, a nyugati karban levő részére pedig EMCW rövidítésekkel hivatkozok. Továbbá a Drift Chamber (DC) detektor nevét olykor DCH rövidítéssel írom.
+
+A korrelációs függvény mérésekor figyelembe kell venni a különböző detektorok pontatlanságát, amely a pálya rekonstrukciós algoritmus sajátosságaiból adódik. A pálya rekonstrukciója során két effektus okoz hibát: közeli részecskepályák esetén az algoritmus összeolvaszthatja a két részecskét eggyé valamint az is megtörténhet, hogy egy pályát ketté oszt az algoritmus, létrehozva egy úgynevezett ``szellem'' részecskét. Ezen effektusok kiküszöbölése érdekében kétrészecske vágásokat alkalmazunk, melynek során kidobjuk az adott távolságnál közelebb eső részecskéket. Ezen vágások megkonstruálása érdekében vizsgáltuk a kétrészecske pályatávolságok, a $\Delta z$ és $\Delta\varphi$, eloszlását a különböző detektorokban, amelyeket ~\aref{fig:paircuts} ábrák mutatnak különböző detektorban, az alkalmazott vágásokkal együtt (mivel ezen vágások is azonosak a kétrészecske analízis során alkalmazott vágásokkal ezért a bemutatott ábrák esztétikai okokból abból az analízisből származnak ~\cite{AN1244}).
+
+A különböző detektorokban a kétrészecske vágásokat az alábbi egyenletekkel definiáltuk:
 
 \begin{itemize}
 \item DCH, EMCE, EMCW:
@@ -1052,6 +1075,8 @@ Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kiz
 \Delta\varphi > \Delta\varphi_0 \textnormal{ és } \Delta z > \Delta z_0 \label{e:newtofwpaircut}
 \end{equation}
 \end{itemize}
+
+Az egyenletekben megjelenő paramétereket ~\aref{tab:paircuts} táblázat foglalja össze. A végső számolás során a $0$ sorszámú vágást alkalmaztam, a táblázatban szereplő többi értéket a szisztematikus hiba analízis során használtam.
 
 \begin{table}[H]
 \begin{center}
@@ -1074,7 +1099,7 @@ Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kiz
 \end{tabular}
 \end{center}
 \caption{A (\ref{e:newdchpaircut})-(\ref{e:newtofwpaircut}) egyenletekben használt vágások paraméterei. A vágások hatását függetlenül vizsgáljuk, a 0-2 vágások a DCH detektorra, a 0,3,4 vágások pedig az EMC, TOFE, TOFW detektorokra vonatkoznak.}
-\label{t:newpaircuts}
+\label{tab:paircuts}
 \end{table}
 
 \begin{figure}[H]
@@ -1085,47 +1110,109 @@ Az analízis során pionok közötti korrelációt mérünk, és szeretnénk kiz
 \includegraphics[scale=0.17]{pic/dat/kd/Corr_EMCW_dzdp_pp.png}\\
 \includegraphics[scale=0.17]{pic/dat/kd/Corr_TOFE_dzdp_pp.png}
 \includegraphics[scale=0.17]{pic/dat/kd/Corr_TOFW_dzdp_mm.png}
+\caption{A kétrészecske analízis során készült $\Delta\varphi-\Delta z$ eloszlások, és az alkalmazott vágások a különböző detektorokban.}
+\label{fig:paircuts}
 \end{figure}
 
 
 \subsection{Korrelációs függvény változói}
+
+~\Aref{sec:C20} fejezetben láttuk, hogy a kétrészecske korrelációs függvényben célszerű áttérni a $2k=p_1-p_2$ és $2K=p_1+p_2$ változókra. A korrelációs függvény  $K$ függése tipikusan simább mint a $k$ függés ~\cite{Lisa:2005dd}, ekkor szokás alkalmazni a $p_1\approx p_2\approx K$ közelítést, azaz feltesszük, hogy a $K$ körülbelül tömeghéjon van. Ennek következtében ~\aref{eq:kK} egyenlet kihasználásával a kétrészecske korrelációs függvény vizsgálható a $\bm{k}$ és $\bm{K}$ hármas vektorok függvényeként, ahol a $\bm{k}$-ra gondolhatunk fő kinematikai változóként. Továbbá midrapiditáshoz közel a $\bm{K}$ hármasvektor helyett áttérhetünk $K_T$ (transzverz momentum nagysága) vagy $m_T$ (transzverz tömeg) változókra, amelyeket a következő összefüggések definiálnak:
+\begin{equation}
+K_T = \frac{1}{2}\sqrt{K_x^2+K_y^2},\;\;\;\;\;\;\;\;
+m_Tc = \sqrt{m^2c^2+K_T^2},
+\end{equation}
+ahol $m$ a piontömeg és $\bm{K}=(K_x, K_y, K_z)$.
+
+Háromrészecske korrelációk vizsgálata során szintén áttérünk a már bevezetett $2k_{ij}=p_i-p_j$ és  $3K=p_1+p_2+p_3$ változókra. Az előbb tárgyal tömeghéj közelítést ebben az esetben is megtehetjük ($p_1\approx p_2\approx p_3 \approx K$), melynek eredményeként áttérhetünk a $\bm{k}_{ij}$ és $\bm{K}$ hármasvektorokra, továbbá a $\bm{K}$ vektor helyett használhatjuk a $K_T$ (vagy $m_T$) skalár változót.
+
+Tehát különböző $m_T$ tömegek esetén mérjük a háromrészecske korrelációs függvényt, mint a $\bm{k}_{ij}$ változók függvénye. A relatív momentumok esetén használjuk a  Bertsch-Pratt (BP) ~\cite{Pratt:1986ev,Bertsch:1988db} dekompozíciót, melynek keretében a vektort out-side-long irányokra bontjuk, ahol az out az átlagos transzverz momentum iránya, a long a nyalábirány, a side pedig az előző kettőre merőleges:
+\begin{equation}
+\bm{k}_{ij} = (k_{ij}^{\mathrm{out}}, k_{ij}^{\mathrm{side}}, k_{ij}^{\mathrm{long}})
+\end{equation}
+ Szokás még áttérni a longitudinálisan együtt mozgó rendszerre (LCMS) egy longitudinális irányba végzett Lorentz boost segítségével ~\cite{Wiedemann:1999qn}.
+
+Tehát ezek alapján a háromrészecske korrelációs függvény a $\bm{k}_{ij}^{\mathrm{LCMS}}$ vektorok és $m_T$ függvénye, azaz minden $m_T$ esetén egy $6$ dimenziós eloszlás. Mivel nincsen elég adat ilyen magas dimenzióban a korrelációs függvény meghatározásához, ezért $\bm{k}_{ij}^{\mathrm{LCMS}}$ vektorokról át kell térnünk valamilyen skalár mennyiségekre, így csökkentve a dimenziószámot háromra. Kétrészecske korrelációk vizsgálata során is gyakran áttérnek a $3$ dimenziós relatív momentum vektorról valamilyen skalár mennyiségre, így növelve a statisztikát ~\cite{Achard:2011zza, Khachatryan:2011hi}. Kétrészecske esetén a legegyszerűbb Lorentz-transzformációra invariáns mennyiséget a következőképpen kapjuk:
+\begin{equation}
+k_{\mathrm{inv}} = \sqrt{k_\mu k^\mu} = \sqrt{(1-\beta_T)^2k_{\mathrm{out}}^2+k_{\mathrm{side}}^2+k_{\mathrm{long}}^2},
+\end{equation}
+ahol $\beta_T=\frac{2K_T}{E_1+E_2}$. Az összefüggés mutatja, hogy $k_{\mathrm{inv}}$ értéke lehet kicsi, miközben a $k_{\mathrm{out}}$ nagy, ha a $\beta_T$ $1$-hez közeli.
+
+A Bose-Einstein korrelációk korábbi vizsgálata során kiderült, hogy $\sqrt{s_{NN}}=200\;\mathrm{GeV}$ tömegközépponti energián végzett ütközések esetén az úgynevezett Bertsch-Pratt-sugarak ($R_\mathrm{out}$, $R_\mathrm{side}$, $R_\mathrm{long}$) azonos nagyságrendűek, azaz a korrelációs függvény közel gömbszimmetrikus az LCMS rendszerben ~\cite{Adler:2004rq, Afanasiev:2009ii, Adams:2004yc, Afanasiev:2007kk}. Amennyiben az LCMS rendszer helyett a pár tömegközépponti rendszerébe (PCMS) térünk át, teljesülni fog, hogy:
+\begin{equation}
+k_{\mathrm{inv}}=\abs{\bm{k}^{\mathrm{PCMS}}}
+\end{equation}
+Ebben a rendszerben azonban a korrelációs függvény már nem lesz gömbszimmetrikus, így $\sqrt{s_{NN}}=200\;\mathrm{GeV}$ tömegközépponti energián a $k_{\mathrm{inv}}$ nem jó választás. Ezért egy olyan változóra kell áttérnünk, amelynek kis értékei esetén teljesül, hogy mindhárom komponens értéke kicsi. A legegyszerűbb ilyen választás az LCMS rendszerben a momentumkülönbség vektor nagysága (jel. $k=\bm{k_{\mathrm{LCMS}}}$). A $k$ a laborrendszerben vett változók segítségével a következő lesz:
+\begin{equation}
+k=\sqrt{k_x^2+k_y^2+k_{\mathrm{long,LCMS}}^2},
+\end{equation} 
+ahol $2k_{x/y}=p_{1,x/y}-p_{2,x/y}$ és
+\begin{equation}
+k_{\mathrm{long,LCMS}}^2=\frac{(p_{1z}E_2-p_{2z}E_1)^2}{(E_1+E_2)^2-(p_{1z}-p_{2z})^2}
+\end{equation}
+
+A kétrészecske esetén látottak alapján a háromrészecske korrelációk vizsgálata során, a kétrészecske momentumkülönbség vektorok helyett az LCMS koordináta-rendszerben számolt nagyságukra térünk át. Így laborrendszerben mért változók segítségével a korrelációs függvény változói a következőképpen számolhatók:
+\begin{equation}
+k_{ij} = \abs{\bm{k}^{\mathrm{LCMS}}_{ij}} = \sqrt{k_{ij, x}^2+k_{ij, y}^2+k_{ij, \mathrm{long, LCMS}}^2},
+\end{equation}
+ahol
+\begin{equation}
+k_{ij, \mathrm{long, LCMS}}^2 = \frac{
+\Big[p_{iz}E_j-p_{jz}E_i+\frac{1}{2}E_k(p_{iz}-p_{jz})-\frac{1}{2}(E_i-E_j)p_{kz}\Big]^2
+}{(E_1+E_2+E_3)^2-(p_{1z}+p_{2z}+p_{3z})^2},
+\end{equation}
+ahol $i\neq j\neq k$.
+
+Tehát a korrelációs függvényt különböző $m_T$ esetén a $k_{ij}$ LCMS rendszerben vett momentumkülönbség nagyságok függvényében vizsgáljuk, így a dimenziószámot $6$-ról $3$-ra redukáltuk.
+ 
 \subsection{Korrelációs függvény mérése}
+
+A korrelációs függvény mérése során az adott eseményben beazonosított részkecskénekből tripletteket képezünk. Ezután a triplettben a részecskepárok momentum különbségéből az előző fejezetben tárgyalt módon meghatározzuk nagyságukat a longitudinálisan együtt mozgó rendszerben. Ezen nagyságokból elkészítünk egy 3 dimenziós momentum eloszlást a triplettek transzverz tömegeinek különböző értékeire (transzverz tömegek tartományát összesen 32 bin-re osztottuk). Ideális esetben ez lenne a korrelációs függvény, azonban ezen mérési módszer során azonban nem vettük figyelembe a detektorok jelentős kinematikai akceptanciai effektusait. Ezen effektusok kiküszöbölése érdekében az úgynevezett eseménykeverés módszerét kell alkalmazni.
+
+Az eseménykeverés módszere során az ideális esetben korrelációs függvényt megadó eloszlást aktuális eloszlásnak nevezzük, és $\mathcal{A}(k_{12},k_{23},k_{31})$ jelölést alkalmazzuk rá (ez az eloszlás az ideálistól jelentősen eltér). Az aktuális eloszlás mellett meg kell határoznunk egy háttéreloszlást ($\mathcal{B}(k_{12},k_{23},k_{31})$), amelyet az $\mathcal{A}$ eloszláshoz hasonló módon, azonban a triplett tagjait különböző eseményből véve kapunk, így ez csupán a detektorok által mesterségesen létrehozott korrelációt tartalmazza. Ezen eloszlás segítségével már megkapható a korrelációs függvény:
+\begin{equation}
+C_3(k_{12},k_{23},k_{31}) = \frac{\mathcal{A}(k_{12},k_{23},k_{31})}{\mathcal{B}(k_{12},k_{23},k_{31})}\frac{\int \mathcal{B}(k_1, k_2, k_3) dk_1dk_2dk_3}{\int \mathcal{A}(k_1,k_2,k_3)dk_1dk_2dk_3},
+\end{equation}
+ahol az integrálás olyan tartományon történik ahol a korrelációs függvény már nem mutat kvantumstatisztikai effektusokat.
+
+Ahhoz, hogy biztosítsuk, hogy a háttéreloszlás a hasonló kinematikai akceptancia effektusokat tartalmazza, teljesülnie kell, hogy az aktuális és háttéresemények hasonlóak $z-$vertex pozícióban és centralitásban. Ezért a $z-$vertex tartományát $2$ cm, a centralitási tartományt pedig $3\%$ felbontással felosztottam, és az aktuális eseményhez az azonos centralitás és $z-$vertex bin-ben levő háttéreseményeket választottam.
+
+Az eseménykeverés módszere során a háttéreloszlás meghatározása többféleképpen történhet. Az általam alkalmazott eseménykeverő módszert ~\aref{fig:mixingevents} ábra szemlélteti. A módszer során az eseményekből egy $N_\mathrm{pool}$ méretű háttérhalmazt készítünk, amelynek mérete legalább akkora mint a legnagyobb esemény multiplicitása. Az aktuális eloszlás meghatározása során, az esemény minden pionjához véletlenszerűen választunk egy eseményt a háttérhalmazból, majd a választott eseményből sorsolunk egy az aktuális eseményből származó pion töltésével egyező piont. Az így kapott háttérrészecskékből az $\mathcal{A}$ eloszláshoz hasonlóan meghatározzuk a $\mathcal{B}$ háttéreloszlást. 
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{pic/dat/mixingevents}
+\caption{A használt eseménykeverő módszer szemléltetése: az aktuális esemény multiplicitásával megegyező számú régi eseményt választunk véletlenszerűen, majd minden eseményből egy részecskét sorsolunk.}
+\label{fig:mixingevents}
 \end{figure}
 
 
-When we measure the actual and background momentum distribution, we will have a special order within the triplet, because going trough the particles of the events define an order between them. But the order within the triplet doesn't matter, so to remove this effect. We achieve this by folding both the $A$ and $B$ histograms, which means: we have to increase the value of $A(i,j,k)$ element:
+Az aktuális és háttéreloszlások meghatározása során, kitüntetek egy sorrendet a triplettek részecskéi között, mivel így sokkal hatékonyabb az eloszlásokat meghatározó algoritmus. Azonban fizikailag a sorrend nem számít, ezért fontos ezen mesterséges effektustól való megszabadulás. Ezt a $\mathcal{A},\; \mathcal{B}$ eloszlások összehajtogatásával tehetjük meg.  Ez azt jelenti, hogy, ha az aktuális eloszlás $(i,j,k)$ bin-ben levő értékéhez, hozzá kell adnunk az indexek minden lehetséges permutációját (lenullázva ezeket), azaz:
 \begin{equation}
-A(i, j, k) = A(i,j,k) + A(i, k, j) + A(k, i, j) + A(k, j, i) + A(j, k, i) + A(j, i, k),
+\mathcal{A}(i, j, k) = \mathcal{A}(i,j,k) + \mathcal{A}(i, k, j) + \mathcal{A}(k, i, j) + \mathcal{A}(k, j, i) + \mathcal{A}(j, k, i) + \mathcal{A}(j, i, k).
 \end{equation}
-and we also have to make zero all the combination besides $(i, j, k)$.
-
-After finishing this procedure, we can calculate the correlation function, same way as in PPG194:
-\begin{equation}
-C_3(k_{12}, k_{13}, k_{23})=\frac{A(k_{12}, k_{13}, k_{23})}{B(k_{12}, k_{13}, k_{23})}\frac{\int B}{\int A}
-\end{equation}
-
-In figure \ref{fig:f4} you can see the effect of the histogram folding. In these plots also can be seen that the triangle inequality for $\vec{k}_{12}$, $\vec{k}_{13}$, $\vec{k}_{23}$ vectors are satisfied.
+A hajtogatást az aktuális és háttéreloszláson kell végezni, a korrelációs függvény meghatározása előtt. ~\Aref{fig:f4} ábra mutatja az aktuális eloszlást hajtogatás előtt és után. Az ábrákon látjuk továbbá, hogy a $\vec{k}_{12}$, $\vec{k}_{13}$, $\vec{k}_{23}$ között teljesül a háromszög-egyenlőtlenség.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.24]{pic/corrfunc/C1}
 \includegraphics[scale=0.24]{pic/corrfunc/C2}
-\caption{Left: measured histogram. Right: folded histogram.}
+\caption{Baloldali ábra mutatja a mérés utáni (hajtogatás előtti) aktuális eloszlást, míg a jobboldali a hajtogatás utáni eloszlást.}
 \label{fig:f4}
 \end{figure}
 
 
 \subsection{Illesztett modell}
+
+A kvantumstatisztikai modell meghatározása a kétrészecskés esetben bemutatotthoz hasonlóan történik, azaz kétrészecskés hullámfüggvény relatív koordinátafüggésére síkhullámot használunk:
 \begin{equation}
-\Psi_{\boldsymbol{k_1}}(\boldsymbol{r_1})=e^{-i\boldsymbol{k_1}\boldsymbol{r_1}}
+\Psi_{\boldsymbol{k_{ij}}}(\boldsymbol{r_{kl}})=e^{i\boldsymbol{k_{ij}}\boldsymbol{r_{kl}}},
 \end{equation}
-To develop the wave function of three particle, we have to take three single particle wave function and create a symmetric combination, which gives the following wave function:
+majd három ilyen hullámfüggvény szorzatának szimmetrizálása után kapjuk meg a háromrészecske hullámfüggvényt:
 \begin{align}
 \begin{split}
-\Psi_{\boldsymbol{k_1},\boldsymbol{k_2},\boldsymbol{k_3}}(\boldsymbol{r_1},\boldsymbol{r_2},\boldsymbol{r_3})=&\frac{1}{\sqrt{6}}\Big(e^{i\boldsymbol{\frac{2}{3}k_{12}}\boldsymbol{r_{12}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{23}}}
+\Psi_{\boldsymbol{k_{12}},\boldsymbol{k_{23}},\boldsymbol{k_{31}}}(\boldsymbol{r_{12}},\boldsymbol{r_{23}},\boldsymbol{r_{31}})=&\frac{1}{\sqrt{6}}\Big(e^{i\boldsymbol{\frac{2}{3}k_{12}}\boldsymbol{r_{12}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{23}}}
 e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{31}}}+
 e^{i\frac{2}{3}\boldsymbol{k_{12}}\boldsymbol{r_{13}}}e^{i\frac{2}{3}\boldsymbol{k_{23}}\boldsymbol{r_{32}}}
 e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{21}}}+\\
@@ -1141,22 +1228,35 @@ e^{i\frac{2}{3}\boldsymbol{k_{31}}\boldsymbol{r_{13}}}\Big)
 \end{split}
 \end{align}
 
-For similar reasons as in PPG194, instead of using $\bm{k_{ij}}$ as variable, which defines a $9$ dimensional space, we use the length of the momentum vector. In this way we reduced the dimension of the problem to $3$. For more details about this dimension reduction see the analysis note of PPG194.
+Ezen hullámfüggvény használva, valamint a forrásfüggvény leírására Lévy eloszlást feltételezve elvégezhető ~\aref{eq:Cn} összefüggés által definiált háromrészecske korrelációs függvény kiszámolása. Áttérve az előző fejezetben tárgyalt változókra, ez a következő alakú lesz:
 
-
-Using these wave functions and Levy distribution as source function, the correlation can be derived, same way as in PPG194. The final result is:
 \begin{align}
 C_3^{(0)}(k_{12}, k_{13}, k_{23}) = 1+ \ell_3e^{-0.5(|2k_{12}R|^\alpha+|2k_{13}R|^\alpha+|2k_{23}R|^\alpha)}\nonumber\\
-+\ell_2\bigg(e^{|2k_{12}R|^\alpha}+e^{|2k_{13}R|^\alpha}+e^{|2k_{23}R|^\alpha}\bigg)
++\ell_2\bigg(e^{|2k_{12}R|^\alpha}+e^{|2k_{13}R|^\alpha}+e^{|2k_{23}R|^\alpha}\bigg),
 \end{align}
 
-In this model the $R$ and $\alpha$ parameters are exactly the same as in PPG194, the new parameters are $\ell_2, \ell_3$. The $\ell_2$ parameter is the two particle correlation strength parameter in the three particle correlation function, and the $\ell_3$ is the tree particle strength parameter.
+ahol $\ell_2$ a kétrészecske szektor korrelációs erőssége, $\ell_3$ pedig a háromrészecske szektor korrelációs erőssége. Ezek mag-glória modell esetén $f_C$ függvények.
 
-We also have to complete this correlation function with a background, to be able to fit the model. We use simple linear background in every direction, with the same slope. With the background, the correlation function will be the following:
+A háromrészecske korrelációs erősség ebben az esetben a következő adódik:
+\begin{equation}
+\lambda_3(m_T) \equiv \lim_{\substack{k_{12}\rightarrow 0\\ k_{23}\rightarrow 0\\ k_{31}\rightarrow 0}} C_3(k_{12},k_{23}, k_{31}, m_T) = \ell_3(m_T)-3\ell_2(m_T)
+\end{equation}
+
+
+Annak érdekében, hogy a modellt illeszthessük, még be kell vezetnünk egy hátteret. A háttér leírására a legegyszerűbb függvényt választottuk, amely három koordinátában ugyanazon meredekséggel leírt lineáris függvény szorzatából áll:
 \begin{equation}
 C_{3, \mathrm{fit}}^{(0)}(k_{12}, k_{13}, k_{23})= N(1+\epsilon k_{12})(1+\epsilon k_{13})(1+\epsilon k_{23})C_3^{(0)}(k_{12}, k_{13}, k_{23})
 \end{equation}
+Tapasztalataink azt mutatták, hogy ez a háttérválasztás megfelelő, és nem kell a különböző változókhoz különböző meredekséget társítani, ami kettővel több illesztési paramétert eredményezne. Az illesztést a $k_{12}=k_{23}=k_{31}$ altéren ~\aref{fig:fit} ábra mutatja két különböző $m_T$ érték esetén. Az ábrán látszik, hogy az illesztések kellően pontosak.
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pic/res/diag_lowpt.pdf}
+\centering
+\includegraphics[scale=0.6]{pic/res/diag_highpt.pdf}
+\caption{A háromrészecske korrelációs függvény illesztésének vizualizációja a $k_{12}=k_{23}=k_{31}$ altéren.}
+\label{fig:fit}
+\end{figure}
 
 
 
@@ -1202,16 +1302,6 @@ the upper or lower limits on the systematic uncertainties.
 
 
 \section{Eredmények}
-\subsection{Illesztés vizualizáció}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{pic/res/diag_lowpt.pdf}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{pic/res/diag_highpt.pdf}
-\end{figure}
 
 \subsection{Háromrészecske korrelációs erősség}
 \begin{figure}[H]
